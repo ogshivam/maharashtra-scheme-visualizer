@@ -6,64 +6,101 @@ A modern dashboard application built to visualize and track the performance of v
 
 ```mermaid
 flowchart TD
-    subgraph Frontend ["Frontend (React + TypeScript)"]
-        style Frontend fill:#fff5e6,stroke:#ff9900
-        UI[UI Components]
-        RC[Recharts]
-        CTX[Context API]
-        style UI fill:#fff5e6,stroke:#ff9900
-        style RC fill:#fff5e6,stroke:#ff9900
-        style CTX fill:#fff5e6,stroke:#ff9900
+    classDef frontend fill:#FFD700,stroke:#D4AF37,stroke-width:2px
+    classDef components fill:#98FB98,stroke:#228B22,stroke-width:2px
+    classDef state fill:#87CEEB,stroke:#4682B4,stroke-width:2px
+    classDef data fill:#DDA0DD,stroke:#8B008B,stroke-width:2px
+
+    subgraph Client ["Client Layer"]
+        direction TB
+        Browser["Web Browser"]
+        Router["React Router"]
+        
+        Browser --> Router
+    end
+
+    subgraph Frontend ["Presentation Layer"]
+        direction TB
+        UI["UI Components"]
+        RC["Recharts Library"]
+        Tailwind["Tailwind CSS"]
+        
         UI --> RC
-        UI --> CTX
+        UI --> Tailwind
     end
 
-    subgraph Components ["Core Components"]
-        style Components fill:#f0fff0,stroke:#006400
-        SC[Scheme Cards]
-        CH[Charts]
-        HD[Header]
-        LP[Login Page]
-        style SC fill:#f0fff0,stroke:#006400
-        style CH fill:#f0fff0,stroke:#006400
-        style HD fill:#f0fff0,stroke:#006400
-        style LP fill:#f0fff0,stroke:#006400
+    subgraph Components ["Component Layer"]
+        direction TB
+        subgraph Pages ["Pages"]
+            LP["Login Page"]
+            DP["Dashboard Page"]
+        end
+        
+        subgraph Core ["Core Components"]
+            SC["Scheme Cards"]
+            CH["Charts"]:::components
+            HD["Header"]
+            KPI["KPI Cards"]
+        end
+        
+        Pages --> Core
     end
 
-    subgraph State ["State Management"]
-        style State fill:#f0f8ff,stroke:#0066cc
-        AC[Auth Context]
-        SchC[Schemes Context]
-        style AC fill:#f0f8ff,stroke:#0066cc
-        style SchC fill:#f0f8ff,stroke:#0066cc
+    subgraph State ["State Management Layer"]
+        direction LR
+        AC["Auth Context"]
+        SchC["Schemes Context"]
+        
+        AC --> SchC
     end
 
+    subgraph Data ["Data Layer"]
+        direction TB
+        JSON["JSON Data Store"]
+        Types["TypeScript Types"]
+        
+        JSON --> Types
+    end
+
+    Client --> Frontend
     Frontend --> Components
     Components --> State
+    State --> Data
+
+    class Frontend frontend
+    class Components,Core,Pages components
+    class State,AC,SchC state
+    class Data,JSON,Types data
 ```
 
 ## Data Flow
 
 ```mermaid
 sequenceDiagram
-    participant U as User
-    participant AC as Auth Context
-    participant SC as Schemes Context
-    participant CP as Components
-    participant CH as Charts
+    autonumber
+    
+    participant B as Browser
+    participant R as React App
+    participant A as Auth Context
+    participant S as Schemes Context
+    participant C as Components
+    participant D as Data Store
 
-    style U fill:#fff5e6,stroke:#ff9900
-    style AC fill:#f0f8ff,stroke:#0066cc
-    style SC fill:#f0f8ff,stroke:#0066cc
-    style CP fill:#f0fff0,stroke:#006400
-    style CH fill:#f0fff0,stroke:#006400
-
-    U->>AC: Login (Admin/General)
-    AC->>U: Auth Status
-    U->>SC: Request Scheme Data
-    SC->>CP: Provide Scheme Data
-    CP->>CH: Transform Data
-    CH->>U: Render Visualizations
+    B->>R: Access Application
+    R->>A: Initialize Auth
+    A->>R: Set User Role
+    R->>S: Request Scheme Data
+    S->>D: Fetch JSON Data
+    D->>S: Return Scheme Data
+    S->>C: Provide Formatted Data
+    C->>B: Render Dashboard
+    
+    Note over B,D: Data refresh cycle
+    
+    B->>C: User Interaction
+    C->>S: Request Updated Data
+    S->>C: Return Updated State
+    C->>B: Update Visualization
 ```
 
 ## Features
