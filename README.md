@@ -219,7 +219,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contact
 
 For any queries regarding this project, please reach out to:
-[Your Contact Information]
+7709255989, shivamatwork1711@gmail.com
 
 ---
 
