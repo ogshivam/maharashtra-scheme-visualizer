@@ -1,0 +1,425 @@
+
+{
+  "schemeCategories": [
+    {
+      "id": "psd",
+      "name": "Public Service Delivery",
+      "schemes": [
+        {
+          "id": "psd-1",
+          "name": "Healthcare Access Initiative",
+          "description": "Increasing healthcare accessibility across rural Maharashtra",
+          "kpis": [
+            {
+              "id": "psd-1-kpi-1",
+              "name": "Beneficiary Enrollment Rate",
+              "currentValue": 68,
+              "targetValue": 85,
+              "unit": "%",
+              "chartType": "gauge",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 52},
+                {"period": "Feb 2023", "value": 55},
+                {"period": "Mar 2023", "value": 58},
+                {"period": "Apr 2023", "value": 60},
+                {"period": "May 2023", "value": 63},
+                {"period": "Jun 2023", "value": 65},
+                {"period": "Jul 2023", "value": 68}
+              ]
+            },
+            {
+              "id": "psd-1-kpi-2",
+              "name": "Average Claim Processing Time",
+              "currentValue": 7,
+              "targetValue": 3,
+              "unit": "days",
+              "chartType": "line",
+              "trend": "down",
+              "minValue": 1,
+              "maxValue": 30,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 14},
+                {"period": "Feb 2023", "value": 12},
+                {"period": "Mar 2023", "value": 11},
+                {"period": "Apr 2023", "value": 10},
+                {"period": "May 2023", "value": 9},
+                {"period": "Jun 2023", "value": 8},
+                {"period": "Jul 2023", "value": 7}
+              ]
+            },
+            {
+              "id": "psd-1-kpi-3",
+              "name": "Reduction in Out-of-Pocket Expenses",
+              "currentValue": 35,
+              "targetValue": 50,
+              "unit": "%",
+              "chartType": "pie",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 20},
+                {"period": "Feb 2023", "value": 22},
+                {"period": "Mar 2023", "value": 25},
+                {"period": "Apr 2023", "value": 28},
+                {"period": "May 2023", "value": 30},
+                {"period": "Jun 2023", "value": 32},
+                {"period": "Jul 2023", "value": 35}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "psd-2",
+          "name": "Digital Service Portal",
+          "description": "Streamlining government service delivery through digital platforms",
+          "kpis": [
+            {
+              "id": "psd-2-kpi-1",
+              "name": "Service Availability Rate",
+              "currentValue": 92,
+              "targetValue": 99,
+              "unit": "%",
+              "chartType": "gauge",
+              "trend": "stable",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 90},
+                {"period": "Feb 2023", "value": 91},
+                {"period": "Mar 2023", "value": 91},
+                {"period": "Apr 2023", "value": 92},
+                {"period": "May 2023", "value": 92},
+                {"period": "Jun 2023", "value": 92},
+                {"period": "Jul 2023", "value": 92}
+              ]
+            },
+            {
+              "id": "psd-2-kpi-2",
+              "name": "Citizen Satisfaction Score",
+              "currentValue": 7.8,
+              "targetValue": 9.0,
+              "unit": "/10",
+              "chartType": "bar",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 10,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 7.0},
+                {"period": "Feb 2023", "value": 7.2},
+                {"period": "Mar 2023", "value": 7.3},
+                {"period": "Apr 2023", "value": 7.5},
+                {"period": "May 2023", "value": 7.6},
+                {"period": "Jun 2023", "value": 7.7},
+                {"period": "Jul 2023", "value": 7.8}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "iud",
+      "name": "Infrastructure & Urban Development",
+      "schemes": [
+        {
+          "id": "iud-1",
+          "name": "Metro Railway Expansion",
+          "description": "Expanding metro connectivity across major urban centers",
+          "kpis": [
+            {
+              "id": "iud-1-kpi-1",
+              "name": "Project Completion Rate",
+              "currentValue": 65,
+              "targetValue": 100,
+              "unit": "%",
+              "chartType": "bar",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 50},
+                {"period": "Feb 2023", "value": 53},
+                {"period": "Mar 2023", "value": 56},
+                {"period": "Apr 2023", "value": 58},
+                {"period": "May 2023", "value": 60},
+                {"period": "Jun 2023", "value": 62},
+                {"period": "Jul 2023", "value": 65}
+              ]
+            },
+            {
+              "id": "iud-1-kpi-2",
+              "name": "Ridership Statistics",
+              "currentValue": 1250000,
+              "targetValue": 2000000,
+              "unit": "passengers/day",
+              "chartType": "line",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 2500000,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 1000000},
+                {"period": "Feb 2023", "value": 1050000},
+                {"period": "Mar 2023", "value": 1100000},
+                {"period": "Apr 2023", "value": 1150000},
+                {"period": "May 2023", "value": 1180000},
+                {"period": "Jun 2023", "value": 1220000},
+                {"period": "Jul 2023", "value": 1250000}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iud-2",
+          "name": "Smart City Initiative",
+          "description": "Implementing smart technology solutions in urban areas",
+          "kpis": [
+            {
+              "id": "iud-2-kpi-1",
+              "name": "Smart Infrastructure Coverage",
+              "currentValue": 45,
+              "targetValue": 80,
+              "unit": "%",
+              "chartType": "gauge",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 30},
+                {"period": "Feb 2023", "value": 32},
+                {"period": "Mar 2023", "value": 35},
+                {"period": "Apr 2023", "value": 38},
+                {"period": "May 2023", "value": 40},
+                {"period": "Jun 2023", "value": 42},
+                {"period": "Jul 2023", "value": 45}
+              ]
+            },
+            {
+              "id": "iud-2-kpi-2",
+              "name": "Digital Governance Implementation",
+              "currentValue": 55,
+              "targetValue": 90,
+              "unit": "%",
+              "chartType": "bar",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 40},
+                {"period": "Feb 2023", "value": 42},
+                {"period": "Mar 2023", "value": 45},
+                {"period": "Apr 2023", "value": 48},
+                {"period": "May 2023", "value": 50},
+                {"period": "Jun 2023", "value": 52},
+                {"period": "Jul 2023", "value": 55}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "egfm",
+      "name": "Economic Growth & Financial Management",
+      "schemes": [
+        {
+          "id": "egfm-1",
+          "name": "MSME Acceleration Program",
+          "description": "Supporting micro, small, and medium enterprises across Maharashtra",
+          "kpis": [
+            {
+              "id": "egfm-1-kpi-1",
+              "name": "New Business Registrations",
+              "currentValue": 15000,
+              "targetValue": 25000,
+              "unit": "registrations",
+              "chartType": "bar",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 30000,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 10000},
+                {"period": "Feb 2023", "value": 11000},
+                {"period": "Mar 2023", "value": 12000},
+                {"period": "Apr 2023", "value": 13000},
+                {"period": "May 2023", "value": 13500},
+                {"period": "Jun 2023", "value": 14200},
+                {"period": "Jul 2023", "value": 15000}
+              ]
+            },
+            {
+              "id": "egfm-1-kpi-2",
+              "name": "Employment Generation",
+              "currentValue": 85000,
+              "targetValue": 150000,
+              "unit": "jobs",
+              "chartType": "line",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 200000,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 60000},
+                {"period": "Feb 2023", "value": 65000},
+                {"period": "Mar 2023", "value": 70000},
+                {"period": "Apr 2023", "value": 75000},
+                {"period": "May 2023", "value": 78000},
+                {"period": "Jun 2023", "value": 82000},
+                {"period": "Jul 2023", "value": 85000}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "egfm-2",
+          "name": "Budget Optimization Framework",
+          "description": "Improving financial efficiency in government operations",
+          "kpis": [
+            {
+              "id": "egfm-2-kpi-1",
+              "name": "Budget Compliance",
+              "currentValue": 88,
+              "targetValue": 98,
+              "unit": "%",
+              "chartType": "bar",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 80},
+                {"period": "Feb 2023", "value": 82},
+                {"period": "Mar 2023", "value": 83},
+                {"period": "Apr 2023", "value": 84},
+                {"period": "May 2023", "value": 85},
+                {"period": "Jun 2023", "value": 86},
+                {"period": "Jul 2023", "value": 88}
+              ]
+            },
+            {
+              "id": "egfm-2-kpi-2",
+              "name": "Cost Reduction Achievement",
+              "currentValue": 15,
+              "targetValue": 25,
+              "unit": "%",
+              "chartType": "line",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 30,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 8},
+                {"period": "Feb 2023", "value": 10},
+                {"period": "Mar 2023", "value": 11},
+                {"period": "Apr 2023", "value": 12},
+                {"period": "May 2023", "value": 13},
+                {"period": "Jun 2023", "value": 14},
+                {"period": "Jul 2023", "value": 15}
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eps",
+      "name": "Environmental Protection & Sustainability",
+      "schemes": [
+        {
+          "id": "eps-1",
+          "name": "Renewable Energy Transition",
+          "description": "Promoting renewable energy sources across Maharashtra",
+          "kpis": [
+            {
+              "id": "eps-1-kpi-1",
+              "name": "Renewable Energy Adoption",
+              "currentValue": 28,
+              "targetValue": 50,
+              "unit": "%",
+              "chartType": "gauge",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 20},
+                {"period": "Feb 2023", "value": 22},
+                {"period": "Mar 2023", "value": 23},
+                {"period": "Apr 2023", "value": 24},
+                {"period": "May 2023", "value": 25},
+                {"period": "Jun 2023", "value": 26},
+                {"period": "Jul 2023", "value": 28}
+              ]
+            },
+            {
+              "id": "eps-1-kpi-2",
+              "name": "Carbon Emission Reduction",
+              "currentValue": 18,
+              "targetValue": 30,
+              "unit": "%",
+              "chartType": "line",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 50,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 10},
+                {"period": "Feb 2023", "value": 12},
+                {"period": "Mar 2023", "value": 13},
+                {"period": "Apr 2023", "value": 14},
+                {"period": "May 2023", "value": 15},
+                {"period": "Jun 2023", "value": 16},
+                {"period": "Jul 2023", "value": 18}
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eps-2",
+          "name": "Water Conservation Program",
+          "description": "Implementing water conservation measures across the state",
+          "kpis": [
+            {
+              "id": "eps-2-kpi-1",
+              "name": "Water Recycling Rate",
+              "currentValue": 35,
+              "targetValue": 60,
+              "unit": "%",
+              "chartType": "gauge",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 100,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 25},
+                {"period": "Feb 2023", "value": 27},
+                {"period": "Mar 2023", "value": 29},
+                {"period": "Apr 2023", "value": 30},
+                {"period": "May 2023", "value": 32},
+                {"period": "Jun 2023", "value": 33},
+                {"period": "Jul 2023", "value": 35}
+              ]
+            },
+            {
+              "id": "eps-2-kpi-2",
+              "name": "Groundwater Level Improvement",
+              "currentValue": 12,
+              "targetValue": 25,
+              "unit": "%",
+              "chartType": "line",
+              "trend": "up",
+              "minValue": 0,
+              "maxValue": 30,
+              "historicalData": [
+                {"period": "Jan 2023", "value": 5},
+                {"period": "Feb 2023", "value": 6},
+                {"period": "Mar 2023", "value": 7},
+                {"period": "Apr 2023", "value": 8},
+                {"period": "May 2023", "value": 9},
+                {"period": "Jun 2023", "value": 10},
+                {"period": "Jul 2023", "value": 12}
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
