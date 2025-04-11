@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -20,9 +19,14 @@ const LoginPage = () => {
       <Card className="w-[350px]">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-center mb-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Seal_of_Maharashtra.svg" 
+            <img src="/maharashtra-gov-logo.png" 
                  alt="Maharashtra Government Logo" 
-                 className="h-20 w-20" />
+                 className="h-20 w-20 object-contain"
+                 onError={(e) => {
+                   console.error('Error loading logo in login page');
+                   e.currentTarget.style.display = 'none';
+                 }}
+            />
           </div>
           <CardTitle className="text-2xl text-center">Government of Maharashtra</CardTitle>
           <CardDescription className="text-center">

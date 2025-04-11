@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "@/components/Header";
@@ -20,10 +19,12 @@ const Dashboard = () => {
     kpi: KPI | null;
     categoryId: string;
     schemeId: string;
+    kpiKey: string;
   }>({
     kpi: null,
     categoryId: "",
-    schemeId: ""
+    schemeId: "",
+    kpiKey: ""
   });
   
   const [selectedScheme, setSelectedScheme] = useState<{
@@ -40,20 +41,21 @@ const Dashboard = () => {
     : schemeCategories;
   
   // Handle KPI editing
-  const handleEditKPI = (categoryId: string, schemeId: string, kpiId: string) => {
+  const handleEditKPI = (categoryId: string, schemeId: string, kpiKey: string) => {
     const category = schemeCategories.find(c => c.id === categoryId);
     if (!category) return;
     
     const scheme = category.schemes.find(s => s.id === schemeId);
     if (!scheme) return;
     
-    const kpi = scheme.kpis.find(k => k.id === kpiId);
+    const kpi = scheme.KPIs[kpiKey];
     if (!kpi) return;
     
     setSelectedKPI({
       kpi,
       categoryId,
-      schemeId
+      schemeId,
+      kpiKey
     });
   };
   
@@ -77,7 +79,7 @@ const Dashboard = () => {
       updateKPI(
         selectedKPI.categoryId,
         selectedKPI.schemeId,
-        selectedKPI.kpi.id,
+        selectedKPI.kpiKey,
         updatedKPI
       );
       
@@ -89,7 +91,8 @@ const Dashboard = () => {
       setSelectedKPI({
         kpi: null,
         categoryId: "",
-        schemeId: ""
+        schemeId: "",
+        kpiKey: ""
       });
     }
   };
@@ -170,7 +173,7 @@ const Dashboard = () => {
       {/* Modals */}
       <EditKPIModal
         open={!!selectedKPI.kpi}
-        onClose={() => setSelectedKPI({ kpi: null, categoryId: "", schemeId: "" })}
+        onClose={() => setSelectedKPI({ kpi: null, categoryId: "", schemeId: "", kpiKey: "" })}
         kpi={selectedKPI.kpi}
         onSave={handleSaveKPI}
       />

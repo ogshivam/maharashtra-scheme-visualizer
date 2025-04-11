@@ -1,10 +1,9 @@
-
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { cn } from '@/lib/utils';
 
 interface BarChartProps {
   data: Array<{
-    period: string;
+    date: string;
     value: number;
   }>;
   currentValue: number;
@@ -15,70 +14,59 @@ interface BarChartProps {
 }
 
 const BarChart = ({ data, currentValue, targetValue, unit, title, className }: BarChartProps) => {
-  // Combine current value with historical data
-  const currentPeriod = "Current";
-  
-  // Format data to ensure consistency for recharts
-  const chartData = [
-    ...data.map(d => ({ period: d.period, value: d.value })),
-    { period: currentPeriod, value: currentValue }
-  ];
-  
-  // Determine if the current value meets the target
-  const isTargetMet = currentValue >= targetValue;
-  
+  // Transform data to include target line
+  const chartData = data.map(item => ({
+    date: item.date,
+    value: item.value,
+    target: targetValue
+  }));
+
+  // Format date to be more compact
+  const formatDate = (date: string) => {
+    const [year, month] = date.split('-');
+    return `${month}/${year.slice(2)}`;
+  };
+
+  // Format value with unit
+  const formatValue = (value: number) => {
+    if (value >= 1000) {
+      return `${(value / 1000).toFixed(1)}k`;
+    }
+    return value.toString();
+  };
+
+  // Calculate left margin based on unit length
+  const leftMargin = Math.max(25, Math.min(60, unit.length * 8));
+
   return (
     <div className={cn("flex flex-col w-full p-4", className)}>
       {title && <h3 className="text-sm font-medium mb-2">{title}</h3>}
-      <div className="w-full h-48 relative">
+      <div className="w-full h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart
-            data={chartData}
-            margin={{ top: 10, right: 10, left: 10, bottom: 20 }}
-          >
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <RechartsBarChart data={chartData} margin={{ top: 10, right: 25, left: leftMargin, bottom: 30 }}>
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis 
-              dataKey="period" 
-              tick={{ fontSize: 10 }} 
-              tickMargin={8}
+              dataKey="date" 
               angle={-45}
               textAnchor="end"
               height={50}
+              interval={0}
+              tick={{ fontSize: 10 }}
+              tickFormatter={formatDate}
             />
             <YAxis 
-              unit={unit} 
-              tickFormatter={(value) => `${value}${unit}`} 
-              width={40}
+              tickFormatter={(value) => `${formatValue(value)}${unit}`}
               tick={{ fontSize: 10 }}
+              width={Math.max(45, unit.length * 4 + 30)}
             />
             <Tooltip 
               formatter={(value: number) => [`${value}${unit}`, 'Value']}
-              labelFormatter={(label) => `Period: ${label}`}
+              labelFormatter={(label) => `Date: ${formatDate(label)}`}
             />
-            <Bar 
-              dataKey="value" 
-              fill="#2563EB" 
-              radius={[4, 4, 0, 0]}
-              animationDuration={1500}
-            />
-            <ReferenceLine 
-              y={targetValue} 
-              label={{ 
-                value: `Target: ${targetValue}${unit}`, 
-                position: 'insideBottomLeft',
-                fill: '#FF5722',
-                fontSize: 10
-              }} 
-              stroke="#FF5722" 
-              strokeDasharray="3 3" 
-            />
+            <Bar dataKey="value" fill="#4f46e5" />
+            <Bar dataKey="target" fill="#ef4444" />
           </RechartsBarChart>
         </ResponsiveContainer>
-      </div>
-      <div className="mt-2 text-xs text-center">
-        <span className={isTargetMet ? "text-green-600 font-medium" : "text-amber-600 font-medium"}>
-          {isTargetMet ? `Target met: ${currentValue}${unit}` : `${((currentValue/targetValue)*100).toFixed(1)}% of target achieved`}
-        </span>
       </div>
     </div>
   );

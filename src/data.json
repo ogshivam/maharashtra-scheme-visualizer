@@ -1,0 +1,1194 @@
+{
+  "PublicServiceDelivery": [
+    {
+      "name": "Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY)",
+      "description": "A flagship health insurance scheme that provides quality and affordable healthcare to economically vulnerable groups.",
+      "KPIs": {
+        "Beneficiary Enrollment Rate": {
+          "description": "Percentage of targeted population enrolled",
+          "dataPoints": {
+            "currentValue": 68,
+            "targetValue": 80,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 62 },
+            { "date": "2023-02", "value": 64 },
+            { "date": "2023-03", "value": 66 }
+          ]
+        },
+        "Claim Settlement Ratio": {
+          "description": "Ratio of successfully settled claims to total claims filed",
+          "dataPoints": {
+            "currentValue": 75,
+            "targetValue": 90,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 70 },
+            { "date": "2023-02", "value": 72 },
+            { "date": "2023-03", "value": 74 }
+          ]
+        },
+        "Average Claim Processing Time": {
+          "description": "Average time required to process health-related claims",
+          "dataPoints": {
+            "currentValue": 5,
+            "targetValue": 3,
+            "unit": "days"
+          },
+          "chartType": "line",
+          "trend": "down",
+          "minValue": 0,
+          "maxValue": 10,
+          "historicalData": [
+            { "date": "2023-01", "value": 6 },
+            { "date": "2023-02", "value": 5.5 },
+            { "date": "2023-03", "value": 5 }
+          ]
+        },
+        "Reduction in Out-of-Pocket Expenses": {
+          "description": "Decrease in direct healthcare expenditures by beneficiaries",
+          "dataPoints": {
+            "currentValue": 20,
+            "targetValue": 30,
+            "unit": "%"
+          },
+          "chartType": "pie",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 15 },
+            { "date": "2023-02", "value": 18 },
+            { "date": "2023-03", "value": 20 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Bhagyalaxmi Yojana",
+      "description": "A scheme focusing on the welfare and educational support of girl children through financial assistance and incentives.",
+      "KPIs": {
+        "Enrollment and Retention": {
+          "description": "Percentage of eligible girl children enrolled and retained at key education levels",
+          "dataPoints": {
+            "currentValue": 65,
+            "targetValue": 85,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 60 },
+            { "date": "2023-02", "value": 62 },
+            { "date": "2023-03", "value": 64 }
+          ]
+        },
+        "Educational Outcome Improvements": {
+          "description": "Improvement in academic performance indicators such as pass rates or exam scores",
+          "dataPoints": {
+            "currentValue": 70,
+            "targetValue": 80,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 65 },
+            { "date": "2023-02", "value": 67 },
+            { "date": "2023-03", "value": 69 }
+          ]
+        },
+        "Awareness and Outreach Levels": {
+          "description": "Percentage of target communities reached through campaign activities",
+          "dataPoints": {
+            "currentValue": 60,
+            "targetValue": 90,
+            "unit": "%"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 55 },
+            { "date": "2023-02", "value": 57 },
+            { "date": "2023-03", "value": 59 }
+          ]
+        },
+        "Timely Disbursement of Funds": {
+          "description": "Average time between application submission and fund release",
+          "dataPoints": {
+            "currentValue": 10,
+            "targetValue": 5,
+            "unit": "days"
+          },
+          "chartType": "bar",
+          "trend": "down",
+          "minValue": 0,
+          "maxValue": 30,
+          "historicalData": [
+            { "date": "2023-01", "value": 12 },
+            { "date": "2023-02", "value": 11 },
+            { "date": "2023-03", "value": 10 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Arogya Sakhi Program",
+      "description": "A community health initiative that trains local volunteers to educate residents about preventive healthcare and facilitate access to medical services.",
+      "KPIs": {
+        "Training and Deployment": {
+          "description": "Number of Arogyasakhis trained and active in communities",
+          "dataPoints": {
+            "currentValue": 200,
+            "targetValue": 250,
+            "unit": "volunteers"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 500,
+          "historicalData": [
+            { "date": "2023-01", "value": 180 },
+            { "date": "2023-02", "value": 190 },
+            { "date": "2023-03", "value": 195 }
+          ]
+        },
+        "Health Awareness Sessions": {
+          "description": "Number of health sessions conducted and community members reached",
+          "dataPoints": {
+            "currentValue": 50,
+            "targetValue": 75,
+            "unit": "sessions/month"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 45 },
+            { "date": "2023-02", "value": 47 },
+            { "date": "2023-03", "value": 49 }
+          ]
+        },
+        "Referral Success Rate": {
+          "description": "Percentage of referred cases that obtain medical care",
+          "dataPoints": {
+            "currentValue": 80,
+            "targetValue": 90,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 75 },
+            { "date": "2023-02", "value": 77 },
+            { "date": "2023-03", "value": 79 }
+          ]
+        },
+        "Improvement in Local Health Metrics": {
+          "description": "Changes in key health indicators such as vaccination rates or maternal health improvements",
+          "dataPoints": {
+            "currentValue": 10,
+            "targetValue": 20,
+            "unit": "percentage points"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 50,
+          "historicalData": [
+            { "date": "2023-01", "value": 8 },
+            { "date": "2023-02", "value": 9 },
+            { "date": "2023-03", "value": 10 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Swastha Bharat Abhiyan",
+      "description": "An integrated public health program aimed at improving primary healthcare facilities, preventative care, and overall health literacy.",
+      "KPIs": {
+        "Facility Upgradation Rate": {
+          "description": "Percentage of healthcare centers upgraded or enhanced under the program",
+          "dataPoints": {
+            "currentValue": 40,
+            "targetValue": 70,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 35 },
+            { "date": "2023-02", "value": 38 },
+            { "date": "2023-03", "value": 40 }
+          ]
+        },
+        "Community Health Outreach": {
+          "description": "Number of awareness campaigns and health check-up camps conducted",
+          "dataPoints": {
+            "currentValue": 15,
+            "targetValue": 25,
+            "unit": "campaigns/month"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 50,
+          "historicalData": [
+            { "date": "2023-01", "value": 13 },
+            { "date": "2023-02", "value": 14 },
+            { "date": "2023-03", "value": 15 }
+          ]
+        },
+        "Patient Satisfaction Index": {
+          "description": "Feedback rating from beneficiaries using the upgraded services",
+          "dataPoints": {
+            "currentValue": 75,
+            "targetValue": 85,
+            "unit": "score (out of 100)"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 70 },
+            { "date": "2023-02", "value": 72 },
+            { "date": "2023-03", "value": 74 }
+          ]
+        },
+        "Reduction in Preventable Diseases": {
+          "description": "Measured decrease in incidences of target diseases through early interventions",
+          "dataPoints": {
+            "currentValue": 12,
+            "targetValue": 20,
+            "unit": "percentage decrease"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 10 },
+            { "date": "2023-02", "value": 11 },
+            { "date": "2023-03", "value": 12 }
+          ]
+        }
+      }
+    }
+  ],
+  "InfrastructureUrbanDevelopment": [
+    {
+      "name": "Mumbai Metro Rail Projects",
+      "description": "An urban mass transit initiative designed to decongest traffic and reduce emissions in Mumbai.",
+      "KPIs": {
+        "Project Milestones": {
+          "description": "Percentage of construction milestones met on schedule",
+          "dataPoints": {
+            "currentValue": 55,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 50 },
+            { "date": "2023-02", "value": 52 },
+            { "date": "2023-03", "value": 55 }
+          ]
+        },
+        "Ridership Statistics": {
+          "description": "Daily or monthly passenger counts and load factors",
+          "dataPoints": {
+            "currentValue": 500000,
+            "targetValue": 600000,
+            "unit": "passengers/month"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000000,
+          "historicalData": [
+            { "date": "2023-01", "value": 480000 },
+            { "date": "2023-02", "value": 490000 },
+            { "date": "2023-03", "value": 500000 }
+          ]
+        },
+        "Operational Punctuality": {
+          "description": "Percentage of on-time departures and arrivals",
+          "dataPoints": {
+            "currentValue": 80,
+            "targetValue": 95,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 75 },
+            { "date": "2023-02", "value": 78 },
+            { "date": "2023-03", "value": 80 }
+          ]
+        },
+        "Environmental Impact": {
+          "description": "Estimated reduction in CO₂ emissions resulting from modal shifts",
+          "dataPoints": {
+            "currentValue": 15,
+            "targetValue": 25,
+            "unit": "tons CO₂ reduced/day"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 50,
+          "historicalData": [
+            { "date": "2023-01", "value": 12 },
+            { "date": "2023-02", "value": 13 },
+            { "date": "2023-03", "value": 15 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Smart City Initiatives (e.g., Nagpur Smart City)",
+      "description": "Initiatives integrating ICT with urban infrastructure to improve the quality and efficiency of city services.",
+      "KPIs": {
+        "Digital Infrastructure Implementation": {
+          "description": "Percentage of planned ICT solutions deployed",
+          "dataPoints": {
+            "currentValue": 60,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 55 },
+            { "date": "2023-02", "value": 57 },
+            { "date": "2023-03", "value": 60 }
+          ]
+        },
+        "Citizen Engagement Score": {
+          "description": "Levels of citizen feedback and participation",
+          "dataPoints": {
+            "currentValue": 70,
+            "targetValue": 90,
+            "unit": "score (out of 100)"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 65 },
+            { "date": "2023-02", "value": 67 },
+            { "date": "2023-03", "value": 70 }
+          ]
+        },
+        "Project Completion Ratio": {
+          "description": "Proportion of projects completed within budget and timeframes",
+          "dataPoints": {
+            "currentValue": 50,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 45 },
+            { "date": "2023-02", "value": 47 },
+            { "date": "2023-03", "value": 50 }
+          ]
+        },
+        "Cost Efficiency Metrics": {
+          "description": "Comparison of actual expenditure to planned budgets",
+          "dataPoints": {
+            "currentValue": 85,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 80 },
+            { "date": "2023-02", "value": 82 },
+            { "date": "2023-03", "value": 85 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pune Metro Project",
+      "description": "An urban rapid transit system under development to improve connectivity within Pune.",
+      "KPIs": {
+        "Construction Progress": {
+          "description": "Percentage completion of construction phases",
+          "dataPoints": {
+            "currentValue": 45,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 40 },
+            { "date": "2023-02", "value": 42 },
+            { "date": "2023-03", "value": 45 }
+          ]
+        },
+        "Budget Adherence": {
+          "description": "Variance between budgeted and actual project costs",
+          "dataPoints": {
+            "currentValue": 95,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "stable",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 94 },
+            { "date": "2023-02", "value": 95 },
+            { "date": "2023-03", "value": 95 }
+          ]
+        },
+        "Projected vs. Actual Ridership": {
+          "description": "Comparison between forecasted and real-time passenger usage post-launch",
+          "dataPoints": {
+            "currentValue": 480000,
+            "targetValue": 500000,
+            "unit": "passengers/month"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000000,
+          "historicalData": [
+            { "date": "2023-01", "value": 470000 },
+            { "date": "2023-02", "value": 475000 },
+            { "date": "2023-03", "value": 480000 }
+          ]
+        },
+        "Integration Efficiency": {
+          "description": "Ease of interconnectivity with other public transport modes",
+          "dataPoints": {
+            "currentValue": 80,
+            "targetValue": 90,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 75 },
+            { "date": "2023-02", "value": 78 },
+            { "date": "2023-03", "value": 80 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Maharashtra State Road Development Scheme",
+      "description": "A road development and maintenance program aimed at improving inter-city connectivity and urban road conditions.",
+      "KPIs": {
+        "Road Quality Index": {
+          "description": "Measured improvement in road conditions (e.g., pothole incidences, smoothness ratings)",
+          "dataPoints": {
+            "currentValue": 65,
+            "targetValue": 90,
+            "unit": "score (out of 100)"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 60 },
+            { "date": "2023-02", "value": 63 },
+            { "date": "2023-03", "value": 65 }
+          ]
+        },
+        "Project Timeliness": {
+          "description": "Percentage of road projects completed on or before deadlines",
+          "dataPoints": {
+            "currentValue": 70,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 65 },
+            { "date": "2023-02", "value": 68 },
+            { "date": "2023-03", "value": 70 }
+          ]
+        },
+        "Budget Compliance": {
+          "description": "Comparison of planned versus actual expenditure",
+          "dataPoints": {
+            "currentValue": 88,
+            "targetValue": 100,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 85 },
+            { "date": "2023-02", "value": 87 },
+            { "date": "2023-03", "value": 88 }
+          ]
+        },
+        "Traffic Decongestion Impact": {
+          "description": "Reduction in average travel times on key corridors",
+          "dataPoints": {
+            "currentValue": 12,
+            "targetValue": 20,
+            "unit": "minutes reduction"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 60,
+          "historicalData": [
+            { "date": "2023-01", "value": 10 },
+            { "date": "2023-02", "value": 11 },
+            { "date": "2023-03", "value": 12 }
+          ]
+        }
+      }
+    }
+  ],
+  "EconomicGrowthFinancialManagement": [
+    {
+      "name": "Maharashtra Industrial Policy & Investment Promotion Programs",
+      "description": "Initiatives designed to attract investment, promote industrial growth, and create jobs across various sectors.",
+      "KPIs": {
+        "Investment Inflow": {
+          "description": "Total value of domestic and foreign investments secured",
+          "dataPoints": {
+            "currentValue": 1500,
+            "targetValue": 2500,
+            "unit": "crore INR"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 3000,
+          "historicalData": [
+            { "date": "2023-01", "value": 1400 },
+            { "date": "2023-02", "value": 1450 },
+            { "date": "2023-03", "value": 1500 }
+          ]
+        },
+        "Industrial Project Approvals": {
+          "description": "Number of approved industrial projects",
+          "dataPoints": {
+            "currentValue": 45,
+            "targetValue": 60,
+            "unit": "projects"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 40 },
+            { "date": "2023-02", "value": 42 },
+            { "date": "2023-03", "value": 45 }
+          ]
+        },
+        "Job Creation": {
+          "description": "Number of employment opportunities generated in targeted sectors",
+          "dataPoints": {
+            "currentValue": 8000,
+            "targetValue": 12000,
+            "unit": "jobs"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 15000,
+          "historicalData": [
+            { "date": "2023-01", "value": 7500 },
+            { "date": "2023-02", "value": 7700 },
+            { "date": "2023-03", "value": 8000 }
+          ]
+        },
+        "Economic Output Growth": {
+          "description": "Increase in industrial output or revenue generation in priority sectors",
+          "dataPoints": {
+            "currentValue": 5,
+            "targetValue": 8,
+            "unit": "percentage growth"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 20,
+          "historicalData": [
+            { "date": "2023-01", "value": 4.5 },
+            { "date": "2023-02", "value": 4.8 },
+            { "date": "2023-03", "value": 5 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Startup & Innovation Support Initiatives",
+      "description": "Programs supporting startups with funding, mentoring, and incubation to foster entrepreneurial growth.",
+      "KPIs": {
+        "Startup Incubation Rate": {
+          "description": "Number of startups supported via accelerators and incubators",
+          "dataPoints": {
+            "currentValue": 50,
+            "targetValue": 100,
+            "unit": "startups"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 200,
+          "historicalData": [
+            { "date": "2023-01", "value": 45 },
+            { "date": "2023-02", "value": 48 },
+            { "date": "2023-03", "value": 50 }
+          ]
+        },
+        "Disbursed Investment Capital": {
+          "description": "Total funds allocated to startup initiatives",
+          "dataPoints": {
+            "currentValue": 400,
+            "targetValue": 600,
+            "unit": "crore INR"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000,
+          "historicalData": [
+            { "date": "2023-01", "value": 380 },
+            { "date": "2023-02", "value": 390 },
+            { "date": "2023-03", "value": 400 }
+          ]
+        },
+        "Post-Incubation Success Rate": {
+          "description": "Percentage of startups achieving key growth milestones post-incubation",
+          "dataPoints": {
+            "currentValue": 40,
+            "targetValue": 60,
+            "unit": "%"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 35 },
+            { "date": "2023-02", "value": 37 },
+            { "date": "2023-03", "value": 40 }
+          ]
+        },
+        "Employment Generation in Startups": {
+          "description": "Number of new jobs created within the startup ecosystem",
+          "dataPoints": {
+            "currentValue": 3500,
+            "targetValue": 5000,
+            "unit": "jobs"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 10000,
+          "historicalData": [
+            { "date": "2023-01", "value": 3300 },
+            { "date": "2023-02", "value": 3400 },
+            { "date": "2023-03", "value": 3500 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "MSME Development & Promotion Program",
+      "description": "An initiative to strengthen MSMEs through financial support, capacity building, and market access.",
+      "KPIs": {
+        "MSME Enrollments": {
+          "description": "Number of enterprises registered and supported under the program",
+          "dataPoints": {
+            "currentValue": 300,
+            "targetValue": 500,
+            "unit": "enterprises"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000,
+          "historicalData": [
+            { "date": "2023-01", "value": 280 },
+            { "date": "2023-02", "value": 290 },
+            { "date": "2023-03", "value": 300 }
+          ]
+        },
+        "Credit Disbursement Volume": {
+          "description": "Amount of funding or loans provided to MSMEs",
+          "dataPoints": {
+            "currentValue": 800,
+            "targetValue": 1000,
+            "unit": "crore INR"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 2000,
+          "historicalData": [
+            { "date": "2023-01", "value": 750 },
+            { "date": "2023-02", "value": 770 },
+            { "date": "2023-03", "value": 800 }
+          ]
+        },
+        "Business Growth Metrics": {
+          "description": "Increase in turnover or productivity of participating enterprises",
+          "dataPoints": {
+            "currentValue": 10,
+            "targetValue": 18,
+            "unit": "percentage increase"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 50,
+          "historicalData": [
+            { "date": "2023-01", "value": 9 },
+            { "date": "2023-02", "value": 9.5 },
+            { "date": "2023-03", "value": 10 }
+          ]
+        },
+        "Employment Impact": {
+          "description": "Number of jobs generated or sustained through MSME growth",
+          "dataPoints": {
+            "currentValue": 4000,
+            "targetValue": 6000,
+            "unit": "jobs"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 8000,
+          "historicalData": [
+            { "date": "2023-01", "value": 3800 },
+            { "date": "2023-02", "value": 3900 },
+            { "date": "2023-03", "value": 4000 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Maharashtra Export Promotion Scheme",
+      "description": "A scheme to enhance the export capabilities of local industries through support in market access, financial incentives, and capacity building.",
+      "KPIs": {
+        "Export Value Growth": {
+          "description": "Percentage increase in export turnover from Maharashtra-based companies",
+          "dataPoints": {
+            "currentValue": 8,
+            "targetValue": 15,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 7 },
+            { "date": "2023-02", "value": 7.5 },
+            { "date": "2023-03", "value": 8 }
+          ]
+        },
+        "Number of Exporters": {
+          "description": "Growth in the number of companies registering as exporters",
+          "dataPoints": {
+            "currentValue": 150,
+            "targetValue": 250,
+            "unit": "companies"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 500,
+          "historicalData": [
+            { "date": "2023-01", "value": 140 },
+            { "date": "2023-02", "value": 145 },
+            { "date": "2023-03", "value": 150 }
+          ]
+        },
+        "Market Expansion Metrics": {
+          "description": "Number of new international markets or trade agreements facilitated",
+          "dataPoints": {
+            "currentValue": 3,
+            "targetValue": 5,
+            "unit": "new markets"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 10,
+          "historicalData": [
+            { "date": "2023-01", "value": 2 },
+            { "date": "2023-02", "value": 2.5 },
+            { "date": "2023-03", "value": 3 }
+          ]
+        },
+        "Support Service Effectiveness": {
+          "description": "Feedback score from exporters on the quality and impact of support services",
+          "dataPoints": {
+            "currentValue": 70,
+            "targetValue": 85,
+            "unit": "score (out of 100)"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 65 },
+            { "date": "2023-02", "value": 67 },
+            { "date": "2023-03", "value": 70 }
+          ]
+        }
+      }
+    }
+  ],
+  "EnvironmentalProtectionSustainability": [
+    {
+      "name": "Jalyukt Shivar Abhiyan",
+      "description": "A water conservation initiative aimed at creating sustainable water resources through the construction of check dams and recharge structures.",
+      "KPIs": {
+        "Infrastructure Count": {
+          "description": "Number of water harvesting structures built",
+          "dataPoints": {
+            "currentValue": 120,
+            "targetValue": 200,
+            "unit": "structures"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 300,
+          "historicalData": [
+            { "date": "2023-01", "value": 110 },
+            { "date": "2023-02", "value": 115 },
+            { "date": "2023-03", "value": 120 }
+          ]
+        },
+        "Groundwater Level Change": {
+          "description": "Measured improvement in groundwater levels",
+          "dataPoints": {
+            "currentValue": 10,
+            "targetValue": 15,
+            "unit": "meters"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 20,
+          "historicalData": [
+            { "date": "2023-01", "value": 9 },
+            { "date": "2023-02", "value": 9.5 },
+            { "date": "2023-03", "value": 10 }
+          ]
+        },
+        "Area Coverage": {
+          "description": "Extent of land brought under water conservation",
+          "dataPoints": {
+            "currentValue": 150,
+            "targetValue": 250,
+            "unit": "hectares"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 500,
+          "historicalData": [
+            { "date": "2023-01", "value": 140 },
+            { "date": "2023-02", "value": 145 },
+            { "date": "2023-03", "value": 150 }
+          ]
+        },
+        "Beneficiary Reach": {
+          "description": "Number of villages/households directly benefiting",
+          "dataPoints": {
+            "currentValue": 30,
+            "targetValue": 50,
+            "unit": "villages"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 25 },
+            { "date": "2023-02", "value": 27 },
+            { "date": "2023-03", "value": 30 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Green Maharashtra Mission",
+      "description": "An initiative focused on reforestation and enhancing green cover for urban and rural sustainability.",
+      "KPIs": {
+        "Tree Plantation Count": {
+          "description": "Number of trees planted and their survival rate over time",
+          "dataPoints": {
+            "currentValue": 50000,
+            "targetValue": 100000,
+            "unit": "trees"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 150000,
+          "historicalData": [
+            { "date": "2023-01", "value": 45000 },
+            { "date": "2023-02", "value": 47500 },
+            { "date": "2023-03", "value": 50000 }
+          ]
+        },
+        "Increase in Green Cover": {
+          "description": "Percentage increase in overall green area coverage",
+          "dataPoints": {
+            "currentValue": 12,
+            "targetValue": 20,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 10 },
+            { "date": "2023-02", "value": 11 },
+            { "date": "2023-03", "value": 12 }
+          ]
+        },
+        "Carbon Sequestration Impact": {
+          "description": "Estimated reduction in carbon emissions due to increased greenery",
+          "dataPoints": {
+            "currentValue": 500,
+            "targetValue": 800,
+            "unit": "tons CO₂/year"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000,
+          "historicalData": [
+            { "date": "2023-01", "value": 450 },
+            { "date": "2023-02", "value": 480 },
+            { "date": "2023-03", "value": 500 }
+          ]
+        },
+        "Community Participation": {
+          "description": "Level of citizen engagement in reforestation activities",
+          "dataPoints": {
+            "currentValue": 40,
+            "targetValue": 70,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 35 },
+            { "date": "2023-02", "value": 37 },
+            { "date": "2023-03", "value": 40 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Maharashtra Solar Energy Adoption Drive",
+      "description": "A renewable energy initiative promoting the installation of solar panels across government, residential, and industrial sectors.",
+      "KPIs": {
+        "Installed Capacity": {
+          "description": "Total megawatts (MW) of solar power added",
+          "dataPoints": {
+            "currentValue": 300,
+            "targetValue": 500,
+            "unit": "MW"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 1000,
+          "historicalData": [
+            { "date": "2023-01", "value": 280 },
+            { "date": "2023-02", "value": 290 },
+            { "date": "2023-03", "value": 300 }
+          ]
+        },
+        "Adoption Rate": {
+          "description": "Percentage of target entities installing solar panels",
+          "dataPoints": {
+            "currentValue": 40,
+            "targetValue": 70,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 35 },
+            { "date": "2023-02", "value": 37 },
+            { "date": "2023-03", "value": 40 }
+          ]
+        },
+        "Reduction in Fossil Fuel Dependence": {
+          "description": "Estimated decrease in fossil fuel usage due to renewable energy uptake",
+          "dataPoints": {
+            "currentValue": 18,
+            "targetValue": 30,
+            "unit": "%"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 16 },
+            { "date": "2023-02", "value": 17 },
+            { "date": "2023-03", "value": 18 }
+          ]
+        },
+        "Cost Savings Achieved": {
+          "description": "Economic benefits realized from reduced electricity bills",
+          "dataPoints": {
+            "currentValue": 25,
+            "targetValue": 35,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 23 },
+            { "date": "2023-02", "value": 24 },
+            { "date": "2023-03", "value": 25 }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Maharashtra Waste Management & Recycling Initiative",
+      "description": "A comprehensive program aimed at enhancing waste segregation, recycling, and disposal practices in urban and rural areas.",
+      "KPIs": {
+        "Waste Segregation Rate": {
+          "description": "Proportion of municipal waste segregated at source",
+          "dataPoints": {
+            "currentValue": 55,
+            "targetValue": 80,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 50 },
+            { "date": "2023-02", "value": 52 },
+            { "date": "2023-03", "value": 55 }
+          ]
+        },
+        "Recycling Efficiency": {
+          "description": "Percentage of total waste that is effectively recycled",
+          "dataPoints": {
+            "currentValue": 45,
+            "targetValue": 70,
+            "unit": "%"
+          },
+          "chartType": "line",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 40 },
+            { "date": "2023-02", "value": 42 },
+            { "date": "2023-03", "value": 45 }
+          ]
+        },
+        "Reduction in Landfill Use": {
+          "description": "Measured decrease in the volume of waste sent to landfills",
+          "dataPoints": {
+            "currentValue": 20,
+            "targetValue": 40,
+            "unit": "%"
+          },
+          "chartType": "gauge",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 18 },
+            { "date": "2023-02", "value": 19 },
+            { "date": "2023-03", "value": 20 }
+          ]
+        },
+        "Public Awareness and Participation": {
+          "description": "Level of citizen engagement in waste management programs",
+          "dataPoints": {
+            "currentValue": 60,
+            "targetValue": 90,
+            "unit": "%"
+          },
+          "chartType": "bar",
+          "trend": "up",
+          "minValue": 0,
+          "maxValue": 100,
+          "historicalData": [
+            { "date": "2023-01", "value": 55 },
+            { "date": "2023-02", "value": 57 },
+            { "date": "2023-03", "value": 60 }
+          ]
+        }
+      }
+    }
+  ]
+}

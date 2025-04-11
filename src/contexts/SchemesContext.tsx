@@ -1,30 +1,30 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import schemeData from '../data/schemes.json';
-
-// Define types based on our JSON structure
-export interface HistoricalData {
-  period: string;
-  value: number;
-}
+import { createContext, useContext, useState, ReactNode } from "react";
+import rawData from "../data.json";
 
 export interface KPI {
-  id: string;
+  id?: string;
   name: string;
-  currentValue: number;
-  targetValue: number;
-  unit: string;
+  description: string;
+  dataPoints: {
+    currentValue: number;
+    targetValue: number;
+    unit: string;
+  };
   chartType: 'gauge' | 'bar' | 'line' | 'pie';
   trend: 'up' | 'down' | 'stable';
   minValue: number;
   maxValue: number;
-  historicalData: HistoricalData[];
+  historicalData: Array<{
+    date: string;
+    value: number;
+  }>;
 }
 
 export interface Scheme {
-  id: string;
+  id?: string;
   name: string;
   description: string;
-  kpis: KPI[];
+  KPIs: Record<string, KPI>;
 }
 
 export interface SchemeCategory {
@@ -33,26 +33,77 @@ export interface SchemeCategory {
   schemes: Scheme[];
 }
 
+interface RawKPI {
+  description: string;
+  dataPoints: {
+    currentValue: number;
+    targetValue: number;
+    unit: string;
+  };
+  chartType: 'gauge' | 'bar' | 'line' | 'pie';
+  trend: 'up' | 'down' | 'stable';
+  minValue: number;
+  maxValue: number;
+  historicalData: Array<{
+    date: string;
+    value: number;
+  }>;
+}
+
+interface RawScheme {
+  name: string;
+  description: string;
+  KPIs: Record<string, RawKPI>;
+}
+
+// Transform the raw data into the format we need
+const transformData = (rawData: Record<string, RawScheme[]>): SchemeCategory[] => {
+  return Object.entries(rawData).map(([categoryKey, schemes]) => {
+    const categoryMap: Record<string, string> = {
+      'PublicServiceDelivery': 'Public Service Delivery',
+      'Infrastructure': 'Infrastructure & Urban Development',
+      'EconomicGrowth': 'Economic Growth & Financial Management',
+      'Environmental': 'Environmental Protection & Sustainability'
+    };
+
+    const categoryIdMap: Record<string, string> = {
+      'PublicServiceDelivery': 'psd',
+      'Infrastructure': 'iud',
+      'EconomicGrowth': 'egfm',
+      'Environmental': 'eps'
+    };
+
+    return {
+      id: categoryIdMap[categoryKey] || categoryKey.toLowerCase(),
+      name: categoryMap[categoryKey] || categoryKey,
+      schemes: schemes.map((scheme, index) => ({
+        id: `${categoryIdMap[categoryKey]}-${index}`,
+        ...scheme,
+        KPIs: Object.entries(scheme.KPIs).reduce((acc, [kpiKey, kpi]) => ({
+          ...acc,
+          [kpiKey]: {
+            id: `${categoryIdMap[categoryKey]}-${index}-${kpiKey.toLowerCase().replace(/\s+/g, '-')}`,
+            name: kpiKey,
+            ...kpi
+          }
+        }), {} as Record<string, KPI>)
+      }))
+    };
+  });
+};
+
 interface SchemesContextType {
   schemeCategories: SchemeCategory[];
   updateKPI: (categoryId: string, schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => void;
-  addKPI: (categoryId: string, schemeId: string, newKPI: KPI) => void;
-  deleteKPI: (categoryId: string, schemeId: string, kpiId: string) => void;
   updateScheme: (categoryId: string, schemeId: string, updatedScheme: Partial<Scheme>) => void;
-  addScheme: (categoryId: string, newScheme: Scheme) => void;
-  deleteScheme: (categoryId: string, schemeId: string) => void;
 }
 
 const SchemesContext = createContext<SchemesContextType | undefined>(undefined);
 
-export const SchemesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [schemeCategories, setSchemeCategories] = useState<SchemeCategory[]>([]);
-
-  useEffect(() => {
-    // Type assertion to ensure the JSON data conforms to our TypeScript types
-    const typedSchemeData = schemeData.schemeCategories as unknown as SchemeCategory[];
-    setSchemeCategories(typedSchemeData);
-  }, []);
+export const SchemesProvider = ({ children }: { children: ReactNode }) => {
+  const [schemeCategories, setSchemeCategories] = useState<SchemeCategory[]>(() => 
+    transformData(rawData as Record<string, RawScheme[]>)
+  );
 
   const updateKPI = (categoryId: string, schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => {
     setSchemeCategories(prevCategories => {
@@ -64,56 +115,13 @@ export const SchemesProvider: React.FC<{ children: ReactNode }> = ({ children })
               if (scheme.id === schemeId) {
                 return {
                   ...scheme,
-                  kpis: scheme.kpis.map(kpi => {
-                    if (kpi.id === kpiId) {
-                      return { ...kpi, ...updatedKPI };
+                  KPIs: {
+                    ...scheme.KPIs,
+                    [kpiId]: {
+                      ...scheme.KPIs[kpiId],
+                      ...updatedKPI
                     }
-                    return kpi;
-                  })
-                };
-              }
-              return scheme;
-            })
-          };
-        }
-        return category;
-      });
-    });
-  };
-
-  const addKPI = (categoryId: string, schemeId: string, newKPI: KPI) => {
-    setSchemeCategories(prevCategories => {
-      return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: category.schemes.map(scheme => {
-              if (scheme.id === schemeId) {
-                return {
-                  ...scheme,
-                  kpis: [...scheme.kpis, newKPI]
-                };
-              }
-              return scheme;
-            })
-          };
-        }
-        return category;
-      });
-    });
-  };
-
-  const deleteKPI = (categoryId: string, schemeId: string, kpiId: string) => {
-    setSchemeCategories(prevCategories => {
-      return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: category.schemes.map(scheme => {
-              if (scheme.id === schemeId) {
-                return {
-                  ...scheme,
-                  kpis: scheme.kpis.filter(kpi => kpi.id !== kpiId)
+                  }
                 };
               }
               return scheme;
@@ -144,44 +152,12 @@ export const SchemesProvider: React.FC<{ children: ReactNode }> = ({ children })
     });
   };
 
-  const addScheme = (categoryId: string, newScheme: Scheme) => {
-    setSchemeCategories(prevCategories => {
-      return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: [...category.schemes, newScheme]
-          };
-        }
-        return category;
-      });
-    });
-  };
-
-  const deleteScheme = (categoryId: string, schemeId: string) => {
-    setSchemeCategories(prevCategories => {
-      return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: category.schemes.filter(scheme => scheme.id !== schemeId)
-          };
-        }
-        return category;
-      });
-    });
-  };
-
   return (
     <SchemesContext.Provider
       value={{
         schemeCategories,
         updateKPI,
-        addKPI,
-        deleteKPI,
-        updateScheme,
-        addScheme,
-        deleteScheme
+        updateScheme
       }}
     >
       {children}
@@ -192,7 +168,7 @@ export const SchemesProvider: React.FC<{ children: ReactNode }> = ({ children })
 export const useSchemes = () => {
   const context = useContext(SchemesContext);
   if (context === undefined) {
-    throw new Error('useSchemes must be used within a SchemesProvider');
+    throw new Error("useSchemes must be used within a SchemesProvider");
   }
   return context;
 };

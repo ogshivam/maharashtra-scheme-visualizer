@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -20,7 +19,10 @@ const EditSchemeModal = ({ open, onClose, scheme, onSave }: EditSchemeModalProps
   // Reset form data when scheme changes
   useState(() => {
     if (scheme) {
-      setFormData(scheme);
+      setFormData({
+        name: scheme.name,
+        description: scheme.description
+      });
     }
   });
 

@@ -1,8 +1,8 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { KPI } from "@/contexts/SchemesContext";
 import { Label } from "@/components/ui/label";
@@ -24,11 +24,22 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
     }
   });
 
-  const handleChange = (field: keyof KPI, value: any) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+  const handleChange = (field: string, value: any) => {
+    if (field.startsWith('dataPoints.')) {
+      const dataPointField = field.split('.')[1];
+      setFormData((prev) => ({
+        ...prev,
+        dataPoints: {
+          ...(prev.dataPoints || {}),
+          [dataPointField]: value
+        }
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [field]: value
+      }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -46,15 +57,35 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4 py-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">KPI Name</Label>
+            <Input
+              id="name"
+              value={formData.name || kpi.name}
+              onChange={(e) => handleChange("name", e.target.value)}
+              className="w-full"
+            />
+          </div>
+          
+          <div className="space-y-2">
+            <Label htmlFor="description">Description</Label>
+            <Textarea
+              id="description"
+              value={formData.description || kpi.description}
+              onChange={(e) => handleChange("description", e.target.value)}
+              rows={3}
+              className="w-full"
+            />
+          </div>
+          
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="currentValue">Current Value</Label>
               <Input
                 id="currentValue"
                 type="number"
-                step="any"
-                value={formData.currentValue || kpi.currentValue}
-                onChange={(e) => handleChange("currentValue", parseFloat(e.target.value))}
+                value={formData.dataPoints?.currentValue || kpi.dataPoints.currentValue}
+                onChange={(e) => handleChange("dataPoints.currentValue", parseFloat(e.target.value))}
                 className="w-full"
               />
             </div>
@@ -64,9 +95,8 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
               <Input
                 id="targetValue"
                 type="number"
-                step="any"
-                value={formData.targetValue || kpi.targetValue}
-                onChange={(e) => handleChange("targetValue", parseFloat(e.target.value))}
+                value={formData.dataPoints?.targetValue || kpi.dataPoints.targetValue}
+                onChange={(e) => handleChange("dataPoints.targetValue", parseFloat(e.target.value))}
                 className="w-full"
               />
             </div>
@@ -77,8 +107,8 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
               <Label htmlFor="unit">Unit</Label>
               <Input
                 id="unit"
-                value={formData.unit || kpi.unit}
-                onChange={(e) => handleChange("unit", e.target.value)}
+                value={formData.dataPoints?.unit || kpi.dataPoints.unit}
+                onChange={(e) => handleChange("dataPoints.unit", e.target.value)}
                 className="w-full"
               />
             </div>
@@ -103,11 +133,10 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
           
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="minValue">Minimum Value</Label>
+              <Label htmlFor="minValue">Min Value</Label>
               <Input
                 id="minValue"
                 type="number"
-                step="any"
                 value={formData.minValue || kpi.minValue}
                 onChange={(e) => handleChange("minValue", parseFloat(e.target.value))}
                 className="w-full"
@@ -115,34 +144,15 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="maxValue">Maximum Value</Label>
+              <Label htmlFor="maxValue">Max Value</Label>
               <Input
                 id="maxValue"
                 type="number"
-                step="any"
                 value={formData.maxValue || kpi.maxValue}
                 onChange={(e) => handleChange("maxValue", parseFloat(e.target.value))}
                 className="w-full"
               />
             </div>
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="chartType">Chart Type</Label>
-            <Select
-              value={formData.chartType || kpi.chartType}
-              onValueChange={(value: 'gauge' | 'bar' | 'line' | 'pie') => handleChange("chartType", value)}
-            >
-              <SelectTrigger id="chartType">
-                <SelectValue placeholder="Select chart type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="gauge">Gauge</SelectItem>
-                <SelectItem value="bar">Bar</SelectItem>
-                <SelectItem value="line">Line</SelectItem>
-                <SelectItem value="pie">Pie</SelectItem>
-              </SelectContent>
-            </Select>
           </div>
           
           <DialogFooter>

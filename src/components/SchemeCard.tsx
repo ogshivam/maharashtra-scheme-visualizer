@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Scheme } from "@/contexts/SchemesContext";
 import KPICard from "./KPICard";
@@ -6,13 +5,32 @@ import { useAuth } from "@/contexts/AuthContext";
 
 interface SchemeCardProps {
   scheme: Scheme;
-  onEditKPI?: (schemeId: string, kpiId: string) => void;
+  onEditKPI?: (schemeId: string, kpiKey: string) => void;
   onEditScheme?: (schemeId: string) => void;
 }
 
 const SchemeCard = ({ scheme, onEditKPI, onEditScheme }: SchemeCardProps) => {
   const { userRole } = useAuth();
   const isAdmin = userRole === 'admin';
+  
+  // Convert KPIs object to array and ensure consistent order
+  const kpiEntries = Object.entries(scheme.KPIs);
+  
+  // Function to get KPI card if it exists at index
+  const getKPICard = (index: number) => {
+    if (index < kpiEntries.length) {
+      const [kpiKey, kpi] = kpiEntries[index];
+      return (
+        <KPICard
+          key={kpiKey}
+          kpi={kpi}
+          isAdmin={isAdmin}
+          onEdit={isAdmin && onEditKPI ? () => onEditKPI(scheme.id, kpiKey) : undefined}
+        />
+      );
+    }
+    return null;
+  };
   
   return (
     <Card className="w-full mb-6">
@@ -35,15 +53,26 @@ const SchemeCard = ({ scheme, onEditKPI, onEditScheme }: SchemeCardProps) => {
       </CardHeader>
       
       <CardContent>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {scheme.kpis.map((kpi) => (
-            <KPICard
-              key={kpi.id}
-              kpi={kpi}
-              isAdmin={isAdmin}
-              onEdit={isAdmin && onEditKPI ? () => onEditKPI(scheme.id, kpi.id) : undefined}
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-fr">
+          {/* Top Left Quadrant */}
+          <div className="min-h-[300px]">
+            {getKPICard(0)}
+          </div>
+          
+          {/* Top Right Quadrant */}
+          <div className="min-h-[300px]">
+            {getKPICard(1)}
+          </div>
+          
+          {/* Bottom Left Quadrant */}
+          <div className="min-h-[300px]">
+            {getKPICard(2)}
+          </div>
+          
+          {/* Bottom Right Quadrant */}
+          <div className="min-h-[300px]">
+            {getKPICard(3)}
+          </div>
         </div>
       </CardContent>
     </Card>
