@@ -6,13 +6,13 @@ const Index = () => {
   const navigate = useNavigate();
   
   useEffect(() => {
-    // Redirect to the login page
-    navigate("/");
+    // Redirect to the dashboard page
+    navigate("/dashboard");
   }, [navigate]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <p>Redirecting...</p>
+      <p>Redirecting to dashboard...</p>
     </div>
   );
 };

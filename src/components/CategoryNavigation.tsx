@@ -24,11 +24,6 @@ const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationPr
     }
   };
   
-  // Map category IDs to display names (for improved display if needed)
-  const getCategoryName = (category: SchemeCategory): string => {
-    return category.name;
-  };
-
   return (
     <div className="mb-8">
       <nav className="flex overflow-x-auto pb-2 space-x-2">
@@ -53,7 +48,7 @@ const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationPr
                 : "bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
             }`}
           >
-            {getCategoryName(category)}
+            {category.name}
           </Link>
         ))}
       </nav>
