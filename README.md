@@ -1,73 +1,189 @@
-# Welcome to your Lovable project
+# Maharashtra Scheme Visualizer
 
-## Project info
+A modern dashboard application built to visualize and track the performance of various government schemes in Maharashtra. This project provides an intuitive interface for both administrators and general users to monitor KPIs (Key Performance Indicators) across different government initiatives.
 
-**URL**: https://lovable.dev/projects/ccfcc3f7-a594-4ab7-bba7-28bcf865f11a
+## System Architecture
 
-## How can I edit this code?
+```mermaid
+flowchart TD
+    subgraph Frontend ["Frontend (React + TypeScript)"]
+        style Frontend fill:#fff5e6,stroke:#ff9900
+        UI[UI Components]
+        RC[Recharts]
+        CTX[Context API]
+        style UI fill:#fff5e6,stroke:#ff9900
+        style RC fill:#fff5e6,stroke:#ff9900
+        style CTX fill:#fff5e6,stroke:#ff9900
+        UI --> RC
+        UI --> CTX
+    end
 
-There are several ways of editing your application.
+    subgraph Components ["Core Components"]
+        style Components fill:#f0fff0,stroke:#006400
+        SC[Scheme Cards]
+        CH[Charts]
+        HD[Header]
+        LP[Login Page]
+        style SC fill:#f0fff0,stroke:#006400
+        style CH fill:#f0fff0,stroke:#006400
+        style HD fill:#f0fff0,stroke:#006400
+        style LP fill:#f0fff0,stroke:#006400
+    end
 
-**Use Lovable**
+    subgraph State ["State Management"]
+        style State fill:#f0f8ff,stroke:#0066cc
+        AC[Auth Context]
+        SchC[Schemes Context]
+        style AC fill:#f0f8ff,stroke:#0066cc
+        style SchC fill:#f0f8ff,stroke:#0066cc
+    end
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ccfcc3f7-a594-4ab7-bba7-28bcf865f11a) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+    Frontend --> Components
+    Components --> State
 ```
 
-**Edit a file directly in GitHub**
+## Data Flow
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant AC as Auth Context
+    participant SC as Schemes Context
+    participant CP as Components
+    participant CH as Charts
 
-**Use GitHub Codespaces**
+    style U fill:#fff5e6,stroke:#ff9900
+    style AC fill:#f0f8ff,stroke:#0066cc
+    style SC fill:#f0f8ff,stroke:#0066cc
+    style CP fill:#f0fff0,stroke:#006400
+    style CH fill:#f0fff0,stroke:#006400
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+    U->>AC: Login (Admin/General)
+    AC->>U: Auth Status
+    U->>SC: Request Scheme Data
+    SC->>CP: Provide Scheme Data
+    CP->>CH: Transform Data
+    CH->>U: Render Visualizations
+```
 
-## What technologies are used for this project?
+## Features
 
-This project is built with:
+- **Interactive Dashboard**: Visualize scheme performance through various chart types:
+  - Bar Charts
+  - Line Charts
+  - Gauge Charts
+  - Pie Charts
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Role-Based Access**:
+  - Administrator view
+  - General User view
 
-## How can I deploy this project?
+- **Scheme Categories**:
+  - Public Service Delivery
+  - Economic Growth & Financial Management
+  - Environmental Protection & Sustainability
+  - And more...
 
-Simply open [Lovable](https://lovable.dev/projects/ccfcc3f7-a594-4ab7-bba7-28bcf865f11a) and click on Share -> Publish.
+- **Real-time KPI Tracking**:
+  - Current values vs. Target values
+  - Historical trend analysis
+  - Performance metrics
+  - Unit-based measurements
 
-## Can I connect a custom domain to my Lovable project?
+- **Modern UI/UX**:
+  - Responsive design
+  - Clean and intuitive interface
+  - Maharashtra government branding
+  - Tailwind CSS styling
 
-Yes it is!
+## Tech Stack
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Frontend Framework**: React with TypeScript
+- **Styling**: Tailwind CSS
+- **Charts**: Recharts
+- **State Management**: React Context
+- **Build Tool**: Vite
+- **Package Manager**: npm/bun
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v16 or higher)
+- npm or bun
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone [your-repository-url]
+   cd maharashtra-scheme-visualizer
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   bun dev
+   ```
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:5173
+   ```
+
+## Project Structure
+
+```
+maharashtra-scheme-visualizer/
+├── src/
+│   ├── components/        # Reusable UI components
+│   ├── contexts/         # React context providers
+│   ├── pages/           # Page components
+│   ├── data/           # Data files and types
+│   └── styles/         # Global styles
+├── public/             # Static assets
+└── ...config files
+```
+
+## Usage
+
+1. **Login**: Select your role (Administrator/General User)
+2. **Dashboard**: View scheme performance metrics
+3. **Interact**: Explore different charts and KPIs
+4. **Monitor**: Track progress against targets
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Government of Maharashtra
+- React and TypeScript communities
+- Recharts library contributors
+- Tailwind CSS team
+
+## Contact
+
+For any queries regarding this project, please reach out to:
+[Your Contact Information]
+
+---
+
+Built with ❤️ for Maharashtra
