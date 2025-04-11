@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import schemeData from '../data/schemes.json';
 
@@ -50,8 +49,9 @@ export const SchemesProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [schemeCategories, setSchemeCategories] = useState<SchemeCategory[]>([]);
 
   useEffect(() => {
-    // Load schemes from JSON
-    setSchemeCategories(schemeData.schemeCategories);
+    // Type assertion to ensure the JSON data conforms to our TypeScript types
+    const typedSchemeData = schemeData.schemeCategories as unknown as SchemeCategory[];
+    setSchemeCategories(typedSchemeData);
   }, []);
 
   const updateKPI = (categoryId: string, schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => {

@@ -1,38 +1,62 @@
 
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { SchemeCategory } from "@/contexts/SchemesContext";
 import { Link } from "react-router-dom";
+import { SchemeCategory } from "@/contexts/SchemesContext";
 
 interface CategoryNavigationProps {
   categories: SchemeCategory[];
   activeCategory: string | null;
-  className?: string;
 }
 
-const CategoryNavigation = ({ categories, activeCategory, className }: CategoryNavigationProps) => {
+const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationProps) => {
+  // Map category IDs to their respective routes
+  const getCategoryRoute = (categoryId: string): string => {
+    switch(categoryId) {
+      case "psd":
+        return "/public-service";
+      case "iud":
+        return "/infrastructure";
+      case "egfm":
+        return "/economic-growth";
+      case "eps":
+        return "/environmental";
+      default:
+        return `/dashboard/category/${categoryId}`;
+    }
+  };
+  
+  // Map category IDs to display names (for improved display if needed)
+  const getCategoryName = (category: SchemeCategory): string => {
+    return category.name;
+  };
+
   return (
-    <div className={cn("flex flex-wrap gap-2 mb-6", className)}>
-      <Button 
-        asChild
-        variant={!activeCategory ? "default" : "outline"}
-        className={cn(!activeCategory ? "bg-dashboardBlue" : "")}
-      >
-        <Link to="/dashboard">All Categories</Link>
-      </Button>
-      
-      {categories.map((category) => (
-        <Button
-          key={category.id}
-          asChild
-          variant={activeCategory === category.id ? "default" : "outline"}
-          className={cn(activeCategory === category.id ? "bg-dashboardBlue" : "")}
+    <div className="mb-8">
+      <nav className="flex overflow-x-auto pb-2 space-x-2">
+        <Link
+          to="/dashboard"
+          className={`px-4 py-2 whitespace-nowrap rounded-md border transition-colors ${
+            activeCategory === null
+              ? "bg-dashboardBlue text-white border-dashboardBlue"
+              : "bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
+          }`}
         >
-          <Link to={`/dashboard/category/${category.id}`}>
-            {category.name}
+          All Categories
+        </Link>
+        
+        {categories.map((category) => (
+          <Link
+            key={category.id}
+            to={getCategoryRoute(category.id)}
+            className={`px-4 py-2 whitespace-nowrap rounded-md border transition-colors ${
+              activeCategory === category.id
+                ? "bg-dashboardBlue text-white border-dashboardBlue"
+                : "bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
+            }`}
+          >
+            {getCategoryName(category)}
           </Link>
-        </Button>
-      ))}
+        ))}
+      </nav>
     </div>
   );
 };
