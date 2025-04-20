@@ -1,0 +1,733 @@
+
+{
+  "districts": [
+    {
+      "districtName": "Thane",
+      "districtCode": "TH",
+      "departments": [
+        {
+          "departmentName": "Public Health",
+          "departmentCode": "PH",
+          "schemes": [
+            {
+              "schemeName": "Mahatma Jyotiba Phule Jan Arogya Yojana (MJPJAY)",
+              "schemeCode": "MJPJAY-TH",
+              "category": "PublicServiceDelivery",
+              "description": "A flagship health insurance scheme that provides quality and affordable healthcare to economically vulnerable groups.",
+              "kpis": [
+                {
+                  "kpiName": "Beneficiary Enrollment Rate",
+                  "kpiId": "mjpjay-th-001",
+                  "description": "Percentage of targeted population enrolled",
+                  "unit": "%",
+                  "currentValue": 68,
+                  "targetValue": 80,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-15T14:30:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 62 },
+                    { "month": "Feb 2025", "value": 64 },
+                    { "month": "Mar 2025", "value": 66 },
+                    { "month": "Apr 2025", "value": 68 }
+                  ]
+                },
+                {
+                  "kpiName": "Claim Settlement Ratio",
+                  "kpiId": "mjpjay-th-002",
+                  "description": "Ratio of successfully settled claims to total claims filed",
+                  "unit": "%",
+                  "currentValue": 75,
+                  "targetValue": 90,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-14T10:15:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 70 },
+                    { "month": "Feb 2025", "value": 72 },
+                    { "month": "Mar 2025", "value": 74 },
+                    { "month": "Apr 2025", "value": 75 }
+                  ]
+                },
+                {
+                  "kpiName": "Average Claim Processing Time",
+                  "kpiId": "mjpjay-th-003",
+                  "description": "Average time required to process health-related claims",
+                  "unit": "days",
+                  "currentValue": 5,
+                  "targetValue": 3,
+                  "chartType": "line",
+                  "trend": "down",
+                  "minValue": 0,
+                  "maxValue": 10,
+                  "lastUpdated": "2025-04-16T09:45:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 6 },
+                    { "month": "Feb 2025", "value": 5.5 },
+                    { "month": "Mar 2025", "value": 5.2 },
+                    { "month": "Apr 2025", "value": 5 }
+                  ]
+                },
+                {
+                  "kpiName": "Reduction in Out-of-Pocket Expenses",
+                  "kpiId": "mjpjay-th-004",
+                  "description": "Decrease in direct healthcare expenditures by beneficiaries",
+                  "unit": "%",
+                  "currentValue": 20,
+                  "targetValue": 30,
+                  "chartType": "pie",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-13T11:20:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 15 },
+                    { "month": "Feb 2025", "value": 18 },
+                    { "month": "Mar 2025", "value": 19 },
+                    { "month": "Apr 2025", "value": 20 }
+                  ]
+                }
+              ]
+            },
+            {
+              "schemeName": "Arogya Sakhi Program",
+              "schemeCode": "ASP-TH",
+              "category": "PublicServiceDelivery",
+              "description": "A community health initiative that trains local volunteers to educate residents about preventive healthcare and facilitate access to medical services.",
+              "kpis": [
+                {
+                  "kpiName": "Training and Deployment",
+                  "kpiId": "asp-th-001",
+                  "description": "Number of Arogyasakhis trained and active in communities",
+                  "unit": "volunteers",
+                  "currentValue": 200,
+                  "targetValue": 250,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 500,
+                  "lastUpdated": "2025-04-15T16:40:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 180 },
+                    { "month": "Feb 2025", "value": 190 },
+                    { "month": "Mar 2025", "value": 195 },
+                    { "month": "Apr 2025", "value": 200 }
+                  ]
+                },
+                {
+                  "kpiName": "Health Awareness Sessions",
+                  "kpiId": "asp-th-002",
+                  "description": "Number of health sessions conducted and community members reached",
+                  "unit": "sessions/month",
+                  "currentValue": 50,
+                  "targetValue": 75,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-14T15:30:00Z",
+                  "updatedBy": "thane_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 45 },
+                    { "month": "Feb 2025", "value": 47 },
+                    { "month": "Mar 2025", "value": 49 },
+                    { "month": "Apr 2025", "value": 50 }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "departmentName": "Education",
+          "departmentCode": "EDU",
+          "schemes": [
+            {
+              "schemeName": "Bhagyalaxmi Yojana",
+              "schemeCode": "BLY-TH",
+              "category": "PublicServiceDelivery",
+              "description": "A scheme focusing on the welfare and educational support of girl children through financial assistance and incentives.",
+              "kpis": [
+                {
+                  "kpiName": "Enrollment and Retention",
+                  "kpiId": "bly-th-001",
+                  "description": "Percentage of eligible girl children enrolled and retained at key education levels",
+                  "unit": "%",
+                  "currentValue": 65,
+                  "targetValue": 85,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-15T13:20:00Z",
+                  "updatedBy": "thane_edu_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 60 },
+                    { "month": "Feb 2025", "value": 62 },
+                    { "month": "Mar 2025", "value": 64 },
+                    { "month": "Apr 2025", "value": 65 }
+                  ]
+                },
+                {
+                  "kpiName": "Educational Outcome Improvements",
+                  "kpiId": "bly-th-002",
+                  "description": "Improvement in academic performance indicators such as pass rates or exam scores",
+                  "unit": "%",
+                  "currentValue": 70,
+                  "targetValue": 80,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-16T09:15:00Z",
+                  "updatedBy": "thane_edu_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 65 },
+                    { "month": "Feb 2025", "value": 67 },
+                    { "month": "Mar 2025", "value": 69 },
+                    { "month": "Apr 2025", "value": 70 }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "districtName": "Mumbai",
+      "districtCode": "MUM",
+      "departments": [
+        {
+          "departmentName": "Infrastructure",
+          "departmentCode": "INF",
+          "schemes": [
+            {
+              "schemeName": "Mumbai Metro Rail Projects",
+              "schemeCode": "MMRP-MUM",
+              "category": "InfrastructureUrbanDevelopment",
+              "description": "An urban mass transit initiative designed to decongest traffic and reduce emissions in Mumbai.",
+              "kpis": [
+                {
+                  "kpiName": "Project Milestones",
+                  "kpiId": "mmrp-mum-001",
+                  "description": "Percentage of construction milestones met on schedule",
+                  "unit": "%",
+                  "currentValue": 55,
+                  "targetValue": 100,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-18T14:30:00Z",
+                  "updatedBy": "mumbai_infra_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 50 },
+                    { "month": "Feb 2025", "value": 52 },
+                    { "month": "Mar 2025", "value": 54 },
+                    { "month": "Apr 2025", "value": 55 }
+                  ]
+                },
+                {
+                  "kpiName": "Ridership Statistics",
+                  "kpiId": "mmrp-mum-002",
+                  "description": "Daily or monthly passenger counts and load factors",
+                  "unit": "passengers/month",
+                  "currentValue": 500000,
+                  "targetValue": 600000,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 1000000,
+                  "lastUpdated": "2025-04-17T09:45:00Z",
+                  "updatedBy": "mumbai_infra_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 480000 },
+                    { "month": "Feb 2025", "value": 490000 },
+                    { "month": "Mar 2025", "value": 495000 },
+                    { "month": "Apr 2025", "value": 500000 }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "departmentName": "Economic Development",
+          "departmentCode": "ECON",
+          "schemes": [
+            {
+              "schemeName": "Maharashtra Industrial Policy & Investment Promotion Programs",
+              "schemeCode": "MIPIPP-MUM",
+              "category": "EconomicGrowthFinancialManagement",
+              "description": "Initiatives designed to attract investment, promote industrial growth, and create jobs across various sectors.",
+              "kpis": [
+                {
+                  "kpiName": "Investment Inflow",
+                  "kpiId": "mipipp-mum-001",
+                  "description": "Total value of domestic and foreign investments secured",
+                  "unit": "crore INR",
+                  "currentValue": 1500,
+                  "targetValue": 2500,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 3000,
+                  "lastUpdated": "2025-04-16T11:30:00Z",
+                  "updatedBy": "mumbai_econ_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 1400 },
+                    { "month": "Feb 2025", "value": 1450 },
+                    { "month": "Mar 2025", "value": 1480 },
+                    { "month": "Apr 2025", "value": 1500 }
+                  ]
+                },
+                {
+                  "kpiName": "Job Creation",
+                  "kpiId": "mipipp-mum-002",
+                  "description": "Number of employment opportunities generated in targeted sectors",
+                  "unit": "jobs",
+                  "currentValue": 8000,
+                  "targetValue": 12000,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 15000,
+                  "lastUpdated": "2025-04-17T14:15:00Z",
+                  "updatedBy": "mumbai_econ_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 7500 },
+                    { "month": "Feb 2025", "value": 7700 },
+                    { "month": "Mar 2025", "value": 7850 },
+                    { "month": "Apr 2025", "value": 8000 }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "districtName": "Pune",
+      "districtCode": "PUN",
+      "departments": [
+        {
+          "departmentName": "Urban Development",
+          "departmentCode": "URB",
+          "schemes": [
+            {
+              "schemeName": "Pune Metro Project",
+              "schemeCode": "PMP-PUN",
+              "category": "InfrastructureUrbanDevelopment",
+              "description": "An urban rapid transit system under development to improve connectivity within Pune.",
+              "kpis": [
+                {
+                  "kpiName": "Construction Progress",
+                  "kpiId": "pmp-pun-001",
+                  "description": "Percentage completion of construction phases",
+                  "unit": "%",
+                  "currentValue": 45,
+                  "targetValue": 100,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-18T16:45:00Z",
+                  "updatedBy": "pune_urban_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 40 },
+                    { "month": "Feb 2025", "value": 42 },
+                    { "month": "Mar 2025", "value": 44 },
+                    { "month": "Apr 2025", "value": 45 }
+                  ]
+                },
+                {
+                  "kpiName": "Budget Adherence",
+                  "kpiId": "pmp-pun-002",
+                  "description": "Variance between budgeted and actual project costs",
+                  "unit": "%",
+                  "currentValue": 95,
+                  "targetValue": 100,
+                  "chartType": "bar",
+                  "trend": "stable",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-17T13:20:00Z",
+                  "updatedBy": "pune_urban_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 94 },
+                    { "month": "Feb 2025", "value": 94.5 },
+                    { "month": "Mar 2025", "value": 95 },
+                    { "month": "Apr 2025", "value": 95 }
+                  ]
+                }
+              ]
+            },
+            {
+              "schemeName": "Smart City Initiatives",
+              "schemeCode": "SCI-PUN",
+              "category": "InfrastructureUrbanDevelopment",
+              "description": "Initiatives integrating ICT with urban infrastructure to improve the quality and efficiency of city services.",
+              "kpis": [
+                {
+                  "kpiName": "Digital Infrastructure Implementation",
+                  "kpiId": "sci-pun-001",
+                  "description": "Percentage of planned ICT solutions deployed",
+                  "unit": "%",
+                  "currentValue": 60,
+                  "targetValue": 100,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-16T14:30:00Z",
+                  "updatedBy": "pune_urban_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 55 },
+                    { "month": "Feb 2025", "value": 57 },
+                    { "month": "Mar 2025", "value": 59 },
+                    { "month": "Apr 2025", "value": 60 }
+                  ]
+                },
+                {
+                  "kpiName": "Citizen Engagement Score",
+                  "kpiId": "sci-pun-002",
+                  "description": "Levels of citizen feedback and participation",
+                  "unit": "score (out of 100)",
+                  "currentValue": 70,
+                  "targetValue": 90,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-15T10:15:00Z",
+                  "updatedBy": "pune_urban_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 65 },
+                    { "month": "Feb 2025", "value": 67 },
+                    { "month": "Mar 2025", "value": 69 },
+                    { "month": "Apr 2025", "value": 70 }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "departmentName": "Environmental Conservation",
+          "departmentCode": "ENV",
+          "schemes": [
+            {
+              "schemeName": "Maharashtra Solar Energy Adoption Drive",
+              "schemeCode": "MSEAD-PUN",
+              "category": "EnvironmentalProtectionSustainability",
+              "description": "A renewable energy initiative promoting the installation of solar panels across government, residential, and industrial sectors.",
+              "kpis": [
+                {
+                  "kpiName": "Installed Capacity",
+                  "kpiId": "msead-pun-001",
+                  "description": "Total megawatts (MW) of solar power added",
+                  "unit": "MW",
+                  "currentValue": 300,
+                  "targetValue": 500,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 1000,
+                  "lastUpdated": "2025-04-18T09:30:00Z",
+                  "updatedBy": "pune_env_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 280 },
+                    { "month": "Feb 2025", "value": 290 },
+                    { "month": "Mar 2025", "value": 295 },
+                    { "month": "Apr 2025", "value": 300 }
+                  ]
+                },
+                {
+                  "kpiName": "Reduction in Fossil Fuel Dependence",
+                  "kpiId": "msead-pun-002",
+                  "description": "Estimated decrease in fossil fuel usage due to renewable energy uptake",
+                  "unit": "%",
+                  "currentValue": 18,
+                  "targetValue": 30,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-17T11:45:00Z",
+                  "updatedBy": "pune_env_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 16 },
+                    { "month": "Feb 2025", "value": 17 },
+                    { "month": "Mar 2025", "value": 17.5 },
+                    { "month": "Apr 2025", "value": 18 }
+                  ]
+                }
+              ]
+            },
+            {
+              "schemeName": "Jalyukt Shivar Abhiyan",
+              "schemeCode": "JSA-PUN",
+              "category": "EnvironmentalProtectionSustainability",
+              "description": "A water conservation initiative aimed at creating sustainable water resources through the construction of check dams and recharge structures.",
+              "kpis": [
+                {
+                  "kpiName": "Infrastructure Count",
+                  "kpiId": "jsa-pun-001",
+                  "description": "Number of water harvesting structures built",
+                  "unit": "structures",
+                  "currentValue": 120,
+                  "targetValue": 200,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 300,
+                  "lastUpdated": "2025-04-16T15:30:00Z",
+                  "updatedBy": "pune_env_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 110 },
+                    { "month": "Feb 2025", "value": 115 },
+                    { "month": "Mar 2025", "value": 118 },
+                    { "month": "Apr 2025", "value": 120 }
+                  ]
+                },
+                {
+                  "kpiName": "Groundwater Level Change",
+                  "kpiId": "jsa-pun-002",
+                  "description": "Measured improvement in groundwater levels",
+                  "unit": "meters",
+                  "currentValue": 10,
+                  "targetValue": 15,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 20,
+                  "lastUpdated": "2025-04-15T14:20:00Z",
+                  "updatedBy": "pune_env_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 9 },
+                    { "month": "Feb 2025", "value": 9.5 },
+                    { "month": "Mar 2025", "value": 9.8 },
+                    { "month": "Apr 2025", "value": 10 }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "districtName": "Nagpur",
+      "districtCode": "NGP",
+      "departments": [
+        {
+          "departmentName": "MSME Development",
+          "departmentCode": "MSME",
+          "schemes": [
+            {
+              "schemeName": "MSME Development & Promotion Program",
+              "schemeCode": "MDPP-NGP",
+              "category": "EconomicGrowthFinancialManagement",
+              "description": "An initiative to strengthen MSMEs through financial support, capacity building, and market access.",
+              "kpis": [
+                {
+                  "kpiName": "MSME Enrollments",
+                  "kpiId": "mdpp-ngp-001",
+                  "description": "Number of enterprises registered and supported under the program",
+                  "unit": "enterprises",
+                  "currentValue": 300,
+                  "targetValue": 500,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 1000,
+                  "lastUpdated": "2025-04-17T10:30:00Z",
+                  "updatedBy": "nagpur_msme_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 280 },
+                    { "month": "Feb 2025", "value": 290 },
+                    { "month": "Mar 2025", "value": 295 },
+                    { "month": "Apr 2025", "value": 300 }
+                  ]
+                },
+                {
+                  "kpiName": "Credit Disbursement Volume",
+                  "kpiId": "mdpp-ngp-002",
+                  "description": "Amount of funding or loans provided to MSMEs",
+                  "unit": "crore INR",
+                  "currentValue": 800,
+                  "targetValue": 1000,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 2000,
+                  "lastUpdated": "2025-04-16T13:45:00Z",
+                  "updatedBy": "nagpur_msme_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 750 },
+                    { "month": "Feb 2025", "value": 770 },
+                    { "month": "Mar 2025", "value": 790 },
+                    { "month": "Apr 2025", "value": 800 }
+                  ]
+                }
+              ]
+            },
+            {
+              "schemeName": "Startup & Innovation Support Initiatives",
+              "schemeCode": "SISI-NGP",
+              "category": "EconomicGrowthFinancialManagement",
+              "description": "Programs supporting startups with funding, mentoring, and incubation to foster entrepreneurial growth.",
+              "kpis": [
+                {
+                  "kpiName": "Startup Incubation Rate",
+                  "kpiId": "sisi-ngp-001",
+                  "description": "Number of startups supported via accelerators and incubators",
+                  "unit": "startups",
+                  "currentValue": 50,
+                  "targetValue": 100,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 200,
+                  "lastUpdated": "2025-04-18T11:15:00Z",
+                  "updatedBy": "nagpur_msme_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 45 },
+                    { "month": "Feb 2025", "value": 47 },
+                    { "month": "Mar 2025", "value": 49 },
+                    { "month": "Apr 2025", "value": 50 }
+                  ]
+                },
+                {
+                  "kpiName": "Post-Incubation Success Rate",
+                  "kpiId": "sisi-ngp-002",
+                  "description": "Percentage of startups achieving key growth milestones post-incubation",
+                  "unit": "%",
+                  "currentValue": 40,
+                  "targetValue": 60,
+                  "chartType": "line",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-17T09:30:00Z",
+                  "updatedBy": "nagpur_msme_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 35 },
+                    { "month": "Feb 2025", "value": 37 },
+                    { "month": "Mar 2025", "value": 39 },
+                    { "month": "Apr 2025", "value": 40 }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "departmentName": "Health Services",
+          "departmentCode": "HLTH",
+          "schemes": [
+            {
+              "schemeName": "Swastha Bharat Abhiyan",
+              "schemeCode": "SBA-NGP",
+              "category": "PublicServiceDelivery",
+              "description": "An integrated public health program aimed at improving primary healthcare facilities, preventative care, and overall health literacy.",
+              "kpis": [
+                {
+                  "kpiName": "Facility Upgradation Rate",
+                  "kpiId": "sba-ngp-001",
+                  "description": "Percentage of healthcare centers upgraded or enhanced under the program",
+                  "unit": "%",
+                  "currentValue": 40,
+                  "targetValue": 70,
+                  "chartType": "gauge",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-15T15:45:00Z",
+                  "updatedBy": "nagpur_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 35 },
+                    { "month": "Feb 2025", "value": 37 },
+                    { "month": "Mar 2025", "value": 39 },
+                    { "month": "Apr 2025", "value": 40 }
+                  ]
+                },
+                {
+                  "kpiName": "Patient Satisfaction Index",
+                  "kpiId": "sba-ngp-002",
+                  "description": "Feedback rating from beneficiaries using the upgraded services",
+                  "unit": "score (out of 100)",
+                  "currentValue": 75,
+                  "targetValue": 85,
+                  "chartType": "bar",
+                  "trend": "up",
+                  "minValue": 0,
+                  "maxValue": 100,
+                  "lastUpdated": "2025-04-16T10:30:00Z",
+                  "updatedBy": "nagpur_health_admin",
+                  "historicalData": [
+                    { "month": "Jan 2025", "value": 70 },
+                    { "month": "Feb 2025", "value": 72 },
+                    { "month": "Mar 2025", "value": 74 },
+                    { "month": "Apr 2025", "value": 75 }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "psd",
+      "name": "Public Service Delivery"
+    },
+    {
+      "id": "iud",
+      "name": "Infrastructure & Urban Development"
+    },
+    {
+      "id": "egfm",
+      "name": "Economic Growth & Financial Management"
+    },
+    {
+      "id": "eps",
+      "name": "Environmental Protection & Sustainability"
+    }
+  ],
+  "roles": {
+    "commissioner": {
+      "accessLevel": "all",
+      "description": "Commissioner with access to all districts and departments"
+    },
+    "district_admin": {
+      "accessLevel": "district",
+      "description": "Administrator with access to all departments within a specific district"
+    },
+    "department_admin": {
+      "accessLevel": "department",
+      "description": "Administrator with access to all schemes within a specific department"
+    },
+    "scheme_manager": {
+      "accessLevel": "scheme",
+      "description": "Manager with access to specific schemes and their KPIs"
+    },
+    "general_user": {
+      "accessLevel": "readonly",
+      "description": "General user with read-only access to public data"
+    }
+  }
+}
