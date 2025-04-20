@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { SchemesProvider } from '@/contexts/SchemesContext';
-import App from './App';
+import App, { ProtectedRoute, PublicRoute } from './App';
 import './index.css';
 import LoginPage from '@/pages/LoginPage';
 import Dashboard from '@/pages/Dashboard';
@@ -28,37 +28,49 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <LoginPage />,
-      },
-      {
-        path: 'dashboard',
-        element: <Dashboard />,
+        element: <PublicRoute />,
         children: [
           {
-            path: '',
-            element: <PublicServiceDeliveryPage />,
-          },
-          {
-            path: 'public-service-delivery',
-            element: <PublicServiceDeliveryPage />,
-          },
-          {
-            path: 'infrastructure',
-            element: <InfrastructurePage />,
-          },
-          {
-            path: 'economic-growth',
-            element: <EconomicGrowthPage />,
-          },
-          {
-            path: 'environmental',
-            element: <EnvironmentalPage />,
+            index: true,
+            element: <LoginPage />,
           },
         ],
       },
       {
-        path: 'district-view',
-        element: <DistrictView />,
+        path: '/',
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: 'dashboard',
+            element: <Dashboard />,
+            children: [
+              {
+                index: true,
+                element: <PublicServiceDeliveryPage />,
+              },
+              {
+                path: 'public-service-delivery',
+                element: <PublicServiceDeliveryPage />,
+              },
+              {
+                path: 'infrastructure',
+                element: <InfrastructurePage />,
+              },
+              {
+                path: 'economic-growth',
+                element: <EconomicGrowthPage />,
+              },
+              {
+                path: 'environmental',
+                element: <EnvironmentalPage />,
+              },
+            ],
+          },
+          {
+            path: 'district-view',
+            element: <DistrictView />,
+          },
+        ],
       },
       {
         path: '*',

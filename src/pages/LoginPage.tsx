@@ -1,16 +1,30 @@
+
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { UserRole } from "@/contexts/AuthContext";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useToast } from "@/components/ui/use-toast";
 
 const LoginPage = () => {
   const { login } = useAuth();
   const [selectedRole, setSelectedRole] = useState<UserRole | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { toast } = useToast();
+  
+  // Get the path to redirect to after login (default to dashboard)
+  const from = (location.state as { from: { pathname: string } })?.from?.pathname || "/dashboard";
 
   const handleLogin = () => {
     if (selectedRole) {
       login(selectedRole);
+      toast({
+        title: "Login successful",
+        description: `You are now logged in as a ${selectedRole === 'admin' ? 'Administrator' : 'General User'}`,
+      });
+      navigate(from, { replace: true });
     }
   };
 
