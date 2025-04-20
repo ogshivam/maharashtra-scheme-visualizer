@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -18,11 +19,11 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
   const [formData, setFormData] = useState<Partial<KPI>>({});
 
   // Reset form data when KPI changes
-  useState(() => {
+  useEffect(() => {
     if (kpi) {
       setFormData(kpi);
     }
-  });
+  }, [kpi]);
 
   const handleChange = (field: string, value: any) => {
     if (field.startsWith('dataPoints.')) {
@@ -33,7 +34,7 @@ const EditKPIModal = ({ open, onClose, kpi, onSave }: EditKPIModalProps) => {
           ...(prev.dataPoints || {}),
           [dataPointField]: value
         }
-      }));
+      }) as Partial<KPI>);
     } else {
       setFormData((prev) => ({
         ...prev,

@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import DistrictDataView from '@/components/DistrictDataView';
 
 const Dashboard = () => {
-  const { schemeCategories } = useSchemes();
+  const { schemeCategories, activeCategory } = useSchemes();
   const navigate = useNavigate();
 
   return (
@@ -25,7 +25,10 @@ const Dashboard = () => {
         </div>
         
         <div className="mb-6">
-          <CategoryNavigation />
+          <CategoryNavigation 
+            categories={schemeCategories} 
+            activeCategory={activeCategory} 
+          />
         </div>
         
         <div className="mb-10">

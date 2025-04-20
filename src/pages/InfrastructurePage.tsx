@@ -1,168 +1,105 @@
-
-import { useSchemes } from "@/contexts/SchemesContext";
-import Header from "@/components/Header";
-import SchemeCard from "@/components/SchemeCard";
-import { useState } from "react";
-import EditKPIModal from "@/components/EditKPIModal";
-import EditSchemeModal from "@/components/EditSchemeModal";
-import { KPI, Scheme } from "@/contexts/SchemesContext";
-import { useAuth } from "@/contexts/AuthContext";
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Header from '@/components/Header';
+import SchemeCard from '@/components/SchemeCard';
+import { useSchemes } from '@/contexts/SchemesContext';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
+import EditKPIModal from '@/components/EditKPIModal';
+import EditSchemeModal from '@/components/EditSchemeModal';
+import { KPI, Scheme } from '@/contexts/SchemesContext';
+import { useAuth } from '@/contexts/AuthContext';
 
 const InfrastructurePage = () => {
-  const { schemeCategories, updateKPI, updateScheme } = useSchemes();
-  const { toast } = useToast();
+  const { schemes: allSchemes, editKPI, editScheme } = useSchemes();
+  const [schemes, setSchemes] = useState(allSchemes);
+  const [editKPIModalOpen, setEditKPIModalOpen] = useState(false);
+  const [editSchemeModalOpen, setEditSchemeModalOpen] = useState(false);
+  const [selectedSchemeId, setSelectedSchemeId] = useState<string | null>(null);
+  const [selectedKPIKey, setSelectedKPIKey] = useState<string | null>(null);
+  const navigate = useNavigate();
   const { userRole } = useAuth();
+  const isAdmin = userRole === 'admin';
   
-  // Find the Infrastructure & Urban Development category
-  const category = schemeCategories.find(cat => cat.id === "iud");
-  
-  // State for modals
-  const [selectedKPI, setSelectedKPI] = useState<{
-    kpi: KPI | null;
-    categoryId: string;
-    schemeId: string;
-  }>({
-    kpi: null,
-    categoryId: "",
-    schemeId: ""
-  });
-  
-  const [selectedScheme, setSelectedScheme] = useState<{
-    scheme: Scheme | null;
-    categoryId: string;
-  }>({
-    scheme: null,
-    categoryId: ""
-  });
+  useEffect(() => {
+    // Filter schemes based on the category when the component mounts or when allSchemes changes
+    const filteredSchemes = allSchemes.filter(scheme => scheme.category === 'iud');
+    setSchemes(filteredSchemes);
+  }, [allSchemes]);
 
-  // Handle KPI editing
-  const handleEditKPI = (categoryId: string, schemeId: string, kpiId: string) => {
-    if (!category) return;
-    
-    const scheme = category.schemes.find(s => s.id === schemeId);
-    if (!scheme) return;
-    
-    const kpi = scheme.kpis.find(k => k.id === kpiId);
-    if (!kpi) return;
-    
-    setSelectedKPI({
-      kpi,
-      categoryId,
-      schemeId
-    });
+  const handleEditKPI = (schemeId: string, kpiKey: string) => {
+    setSelectedSchemeId(schemeId);
+    setSelectedKPIKey(kpiKey);
+    setEditKPIModalOpen(true);
   };
   
-  // Handle scheme editing
-  const handleEditScheme = (categoryId: string, schemeId: string) => {
-    if (!category) return;
-    
-    const scheme = category.schemes.find(s => s.id === schemeId);
-    if (!scheme) return;
-    
-    setSelectedScheme({
-      scheme,
-      categoryId
-    });
+  const handleEditScheme = (schemeId: string) => {
+    setSelectedSchemeId(schemeId);
+    setEditSchemeModalOpen(true);
+  };
+
+  const closeEditKPIModal = () => {
+    setEditKPIModalOpen(false);
+    setSelectedSchemeId(null);
+    setSelectedKPIKey(null);
   };
   
-  // Save KPI changes
-  const handleSaveKPI = (updatedKPI: Partial<KPI>) => {
-    if (selectedKPI.kpi) {
-      updateKPI(
-        selectedKPI.categoryId,
-        selectedKPI.schemeId,
-        selectedKPI.kpi.id,
-        updatedKPI
-      );
-      
-      toast({
-        title: "KPI Updated",
-        description: `${selectedKPI.kpi.name} has been successfully updated.`,
-      });
-      
-      setSelectedKPI({
-        kpi: null,
-        categoryId: "",
-        schemeId: ""
-      });
+  const closeEditSchemeModal = () => {
+    setEditSchemeModalOpen(false);
+    setSelectedSchemeId(null);
+  };
+
+  const saveKPIChanges = (updatedKPI: Partial<KPI>) => {
+    if (selectedSchemeId && selectedKPIKey) {
+      editKPI(selectedSchemeId, selectedKPIKey, updatedKPI);
+      closeEditKPIModal();
     }
   };
   
-  // Save scheme changes
-  const handleSaveScheme = (updatedScheme: Partial<Scheme>) => {
-    if (selectedScheme.scheme) {
-      updateScheme(
-        selectedScheme.categoryId,
-        selectedScheme.scheme.id,
-        updatedScheme
-      );
-      
-      toast({
-        title: "Scheme Updated",
-        description: `${selectedScheme.scheme.name} has been successfully updated.`,
-      });
-      
-      setSelectedScheme({
-        scheme: null,
-        categoryId: ""
-      });
+  const saveSchemeChanges = (updatedScheme: Partial<Scheme>) => {
+    if (selectedSchemeId) {
+      editScheme(selectedSchemeId, updatedScheme);
+      closeEditSchemeModal();
     }
   };
+
+  const selectedScheme = selectedSchemeId ? schemes.find(scheme => scheme.id === selectedSchemeId) : null;
+  const selectedKPI = selectedSchemeId && selectedKPIKey && selectedScheme?.KPIs ? selectedScheme.KPIs[selectedKPIKey] : null;
   
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-1 container py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Infrastructure & Urban Development</h1>
-          <Button asChild variant="outline">
-            <Link to="/dashboard">View All Categories</Link>
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold">Infrastructure & Urban Development</h2>
+        <div>
+          <Button variant="outline" onClick={() => navigate('/dashboard')}>
+            Back to Dashboard
           </Button>
         </div>
+      </div>
+      
+      <div className="space-y-6">
+        {schemes.map((scheme) => (
+          <SchemeCard
+            key={scheme.id}
+            scheme={scheme}
+            onEditKPI={isAdmin ? handleEditKPI : undefined}
+            onEditScheme={isAdmin ? handleEditScheme : undefined}
+          />
+        ))}
         
-        {category ? (
-          <div>
-            {category.schemes.map((scheme) => (
-              <SchemeCard
-                key={scheme.id}
-                scheme={scheme}
-                onEditKPI={(schemeId, kpiId) => 
-                  handleEditKPI(category.id, schemeId, kpiId)
-                }
-                onEditScheme={(schemeId) => 
-                  handleEditScheme(category.id, schemeId)
-                }
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <h3 className="text-lg font-medium mb-2">Category not found</h3>
-            <Button asChild className="mt-4">
-              <Link to="/dashboard">Return to Dashboard</Link>
-            </Button>
-          </div>
-        )}
-      </main>
-      
-      {/* Modals */}
-      <EditKPIModal
-        open={!!selectedKPI.kpi}
-        onClose={() => setSelectedKPI({ kpi: null, categoryId: "", schemeId: "" })}
-        kpi={selectedKPI.kpi}
-        onSave={handleSaveKPI}
-      />
-      
-      <EditSchemeModal
-        open={!!selectedScheme.scheme}
-        onClose={() => setSelectedScheme({ scheme: null, categoryId: "" })}
-        scheme={selectedScheme.scheme}
-        onSave={handleSaveScheme}
-      />
+        <EditKPIModal
+          open={editKPIModalOpen}
+          onClose={closeEditKPIModal}
+          kpi={selectedKPI || null}
+          onSave={saveKPIChanges}
+        />
+        
+        <EditSchemeModal
+          open={editSchemeModalOpen}
+          onClose={closeEditSchemeModal}
+          scheme={selectedScheme || null}
+          onSave={saveSchemeChanges}
+        />
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { getAllDistricts, getDepartments, getSchemes } from '../utils/dataUtils';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { District, Department, Scheme } from '../types/schemeTypes';
+import { District, Department, Scheme, KPI } from '../types/schemeTypes';
 import KPICard from './KPICard';
 
 const DistrictDataView: React.FC = () => {
@@ -15,6 +15,21 @@ const DistrictDataView: React.FC = () => {
   const schemes = selectedDistrict && selectedDepartment 
     ? getSchemes(selectedDistrict.districtCode, selectedDepartment.departmentCode) 
     : [];
+
+  const handleDistrictSelect = (district: District) => {
+    setSelectedDistrict(district);
+    setSelectedDepartment(null);
+    setSelectedScheme(null);
+  };
+
+  const handleDepartmentSelect = (department: Department) => {
+    setSelectedDepartment(department);
+    setSelectedScheme(null);
+  };
+
+  const handleSchemeSelect = (scheme: Scheme) => {
+    setSelectedScheme(scheme);
+  };
 
   return (
     <div className="p-4">
@@ -36,11 +51,7 @@ const DistrictDataView: React.FC = () => {
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-card hover:bg-accent'
                   }`}
-                  onClick={() => {
-                    setSelectedDistrict(district);
-                    setSelectedDepartment(null);
-                    setSelectedScheme(null);
-                  }}
+                  onClick={() => handleDistrictSelect(district)}
                 >
                   {district.districtName}
                 </button>
@@ -67,10 +78,7 @@ const DistrictDataView: React.FC = () => {
                         ? 'bg-primary text-primary-foreground'
                         : 'bg-card hover:bg-accent'
                     }`}
-                    onClick={() => {
-                      setSelectedDepartment(department);
-                      setSelectedScheme(null);
-                    }}
+                    onClick={() => handleDepartmentSelect(department)}
                   >
                     {department.departmentName}
                   </button>
@@ -100,7 +108,7 @@ const DistrictDataView: React.FC = () => {
                         ? 'bg-primary text-primary-foreground'
                         : 'bg-card hover:bg-accent'
                     }`}
-                    onClick={() => setSelectedScheme(scheme)}
+                    onClick={() => handleSchemeSelect(scheme)}
                   >
                     <div className="font-medium">{scheme.schemeName}</div>
                     <div className="text-xs opacity-70">{scheme.description}</div>
@@ -128,8 +136,8 @@ const DistrictDataView: React.FC = () => {
                     targetValue: kpi.targetValue,
                     unit: kpi.unit
                   },
-                  chartType: kpi.chartType,
-                  trend: kpi.trend,
+                  chartType: kpi.chartType as "gauge" | "bar" | "line" | "pie",
+                  trend: kpi.trend as "up" | "down" | "stable",
                   minValue: kpi.minValue,
                   maxValue: kpi.maxValue,
                   historicalData: kpi.historicalData.map(item => ({

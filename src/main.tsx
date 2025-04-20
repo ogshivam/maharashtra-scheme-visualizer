@@ -14,52 +14,61 @@ import EconomicGrowthPage from '@/pages/EconomicGrowthPage';
 import EnvironmentalPage from '@/pages/EnvironmentalPage';
 import NotFound from '@/pages/NotFound';
 import DistrictView from '@/pages/DistrictView';
+import Index from '@/pages/Index';
 
+// Define the router with all routes
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/dashboard',
-    element: <Dashboard />,
     children: [
       {
-        path: '',
-        element: <PublicServiceDeliveryPage />,
+        index: true,
+        element: <Index />,
       },
       {
-        path: 'public-service-delivery',
-        element: <PublicServiceDeliveryPage />,
+        path: 'login',
+        element: <LoginPage />,
       },
       {
-        path: 'infrastructure',
-        element: <InfrastructurePage />,
+        path: 'dashboard',
+        element: <Dashboard />,
+        children: [
+          {
+            path: '',
+            element: <PublicServiceDeliveryPage />,
+          },
+          {
+            path: 'public-service-delivery',
+            element: <PublicServiceDeliveryPage />,
+          },
+          {
+            path: 'infrastructure',
+            element: <InfrastructurePage />,
+          },
+          {
+            path: 'economic-growth',
+            element: <EconomicGrowthPage />,
+          },
+          {
+            path: 'environmental',
+            element: <EnvironmentalPage />,
+          },
+        ],
       },
       {
-        path: 'economic-growth',
-        element: <EconomicGrowthPage />,
+        path: 'district-view',
+        element: <DistrictView />,
       },
       {
-        path: 'environmental',
-        element: <EnvironmentalPage />,
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
-  {
-    path: '/district-view',
-    element: <DistrictView />,
-  },
-  {
-    path: '*',
-    element: <NotFound />,
-  },
 ]);
 
+// Render the app with the router provider and context providers
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>

@@ -1,168 +1,92 @@
-
-import { useSchemes } from "@/contexts/SchemesContext";
-import Header from "@/components/Header";
-import SchemeCard from "@/components/SchemeCard";
-import { useState } from "react";
-import EditKPIModal from "@/components/EditKPIModal";
-import EditSchemeModal from "@/components/EditSchemeModal";
-import { KPI, Scheme } from "@/contexts/SchemesContext";
-import { useAuth } from "@/contexts/AuthContext";
-import { useToast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useSchemes } from '@/contexts/SchemesContext';
+import { useAuth } from '@/contexts/AuthContext';
+import SchemeCard from '@/components/SchemeCard';
+import EditKPIModal from '@/components/EditKPIModal';
+import EditSchemeModal from '@/components/EditSchemeModal';
+import { Button } from '@/components/ui/button';
+import { KPI, Scheme } from '@/contexts/SchemesContext';
 
 const EnvironmentalPage = () => {
-  const { schemeCategories, updateKPI, updateScheme } = useSchemes();
-  const { toast } = useToast();
+  const { getSchemesByCategory, updateKPI, updateScheme } = useSchemes();
   const { userRole } = useAuth();
+  const isAdmin = userRole === 'admin';
   
-  // Find the Environmental Protection & Sustainability category
-  const category = schemeCategories.find(cat => cat.id === "eps");
+  const schemes = getSchemesByCategory('eps');
   
-  // State for modals
-  const [selectedKPI, setSelectedKPI] = useState<{
-    kpi: KPI | null;
-    categoryId: string;
-    schemeId: string;
-  }>({
+  const [editingKPI, setEditingKPI] = useState<{ kpi: KPI | null; schemeId: string | null }>({
     kpi: null,
-    categoryId: "",
-    schemeId: ""
+    schemeId: null,
   });
   
-  const [selectedScheme, setSelectedScheme] = useState<{
-    scheme: Scheme | null;
-    categoryId: string;
-  }>({
-    scheme: null,
-    categoryId: ""
-  });
-
-  // Handle KPI editing
-  const handleEditKPI = (categoryId: string, schemeId: string, kpiId: string) => {
-    if (!category) return;
-    
-    const scheme = category.schemes.find(s => s.id === schemeId);
-    if (!scheme) return;
-    
-    const kpi = scheme.kpis.find(k => k.id === kpiId);
-    if (!kpi) return;
-    
-    setSelectedKPI({
-      kpi,
-      categoryId,
-      schemeId
-    });
-  };
+  const [editingScheme, setEditingScheme] = useState<Scheme | null>(null);
   
-  // Handle scheme editing
-  const handleEditScheme = (categoryId: string, schemeId: string) => {
-    if (!category) return;
-    
-    const scheme = category.schemes.find(s => s.id === schemeId);
-    if (!scheme) return;
-    
-    setSelectedScheme({
-      scheme,
-      categoryId
-    });
-  };
-  
-  // Save KPI changes
-  const handleSaveKPI = (updatedKPI: Partial<KPI>) => {
-    if (selectedKPI.kpi) {
-      updateKPI(
-        selectedKPI.categoryId,
-        selectedKPI.schemeId,
-        selectedKPI.kpi.id,
-        updatedKPI
-      );
-      
-      toast({
-        title: "KPI Updated",
-        description: `${selectedKPI.kpi.name} has been successfully updated.`,
-      });
-      
-      setSelectedKPI({
-        kpi: null,
-        categoryId: "",
-        schemeId: ""
+  const handleEditKPI = (schemeId: string, kpiKey: string) => {
+    const scheme = schemes.find((s) => s.id === schemeId);
+    if (scheme && scheme.KPIs[kpiKey]) {
+      setEditingKPI({
+        kpi: { ...scheme.KPIs[kpiKey], id: kpiKey },
+        schemeId,
       });
     }
   };
   
-  // Save scheme changes
+  const handleSaveKPI = (updatedKPI: Partial<KPI>) => {
+    if (editingKPI.schemeId && editingKPI.kpi) {
+      updateKPI(editingKPI.schemeId, editingKPI.kpi.id, updatedKPI);
+      setEditingKPI({ kpi: null, schemeId: null });
+    }
+  };
+  
+  const handleEditScheme = (schemeId: string) => {
+    const scheme = schemes.find((s) => s.id === schemeId);
+    if (scheme) {
+      setEditingScheme(scheme);
+    }
+  };
+  
   const handleSaveScheme = (updatedScheme: Partial<Scheme>) => {
-    if (selectedScheme.scheme) {
-      updateScheme(
-        selectedScheme.categoryId,
-        selectedScheme.scheme.id,
-        updatedScheme
-      );
-      
-      toast({
-        title: "Scheme Updated",
-        description: `${selectedScheme.scheme.name} has been successfully updated.`,
-      });
-      
-      setSelectedScheme({
-        scheme: null,
-        categoryId: ""
-      });
+    if (editingScheme) {
+      updateScheme(editingScheme.id, updatedScheme);
+      setEditingScheme(null);
     }
   };
   
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
-      <Header />
-      
-      <main className="flex-1 container py-8">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Environmental Protection & Sustainability</h1>
-          <Button asChild variant="outline">
-            <Link to="/dashboard">View All Categories</Link>
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold">Environmental Protection & Sustainability</h2>
+        {isAdmin && (
+          <Button variant="outline" size="sm">
+            Add New Scheme
           </Button>
-        </div>
-        
-        {category ? (
-          <div>
-            {category.schemes.map((scheme) => (
-              <SchemeCard
-                key={scheme.id}
-                scheme={scheme}
-                onEditKPI={(schemeId, kpiId) => 
-                  handleEditKPI(category.id, schemeId, kpiId)
-                }
-                onEditScheme={(schemeId) => 
-                  handleEditScheme(category.id, schemeId)
-                }
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <h3 className="text-lg font-medium mb-2">Category not found</h3>
-            <Button asChild className="mt-4">
-              <Link to="/dashboard">Return to Dashboard</Link>
-            </Button>
-          </div>
         )}
-      </main>
+      </div>
       
-      {/* Modals */}
-      <EditKPIModal
-        open={!!selectedKPI.kpi}
-        onClose={() => setSelectedKPI({ kpi: null, categoryId: "", schemeId: "" })}
-        kpi={selectedKPI.kpi}
-        onSave={handleSaveKPI}
-      />
-      
-      <EditSchemeModal
-        open={!!selectedScheme.scheme}
-        onClose={() => setSelectedScheme({ scheme: null, categoryId: "" })}
-        scheme={selectedScheme.scheme}
-        onSave={handleSaveScheme}
-      />
+      <div className="space-y-6">
+        {schemes.map((scheme) => (
+          <SchemeCard
+            key={scheme.id}
+            scheme={scheme}
+            onEditKPI={isAdmin ? handleEditKPI : undefined}
+            onEditScheme={isAdmin ? handleEditScheme : undefined}
+          />
+        ))}
+        
+        <EditKPIModal
+          open={!!editingKPI.kpi}
+          onClose={() => setEditingKPI({ kpi: null, schemeId: null })}
+          kpi={editingKPI.kpi}
+          onSave={handleSaveKPI}
+        />
+        
+        <EditSchemeModal
+          open={!!editingScheme}
+          onClose={() => setEditingScheme(null)}
+          scheme={editingScheme}
+          onSave={handleSaveScheme}
+        />
+      </div>
     </div>
   );
 };
