@@ -48,15 +48,15 @@ const KPIAlertSystem: React.FC<KPIAlertSystemProps> = ({ kpis }) => {
       )}
 
       {warningAlerts.length > 0 && (
-        <Alert variant="warning">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle>KPI Warnings</AlertTitle>
-          <AlertDescription>
+        <Alert className="border-amber-200 bg-amber-50">
+          <AlertTriangle className="h-4 w-4 text-amber-600" />
+          <AlertTitle className="text-amber-800">KPI Warnings</AlertTitle>
+          <AlertDescription className="text-amber-800">
             <div className="mt-2">
               <p className="text-sm mb-2">These KPIs are below target and need attention:</p>
               <div className="flex flex-wrap gap-2">
                 {warningAlerts.map((kpi) => (
-                  <Badge key={kpi.id} variant="warning" className="text-xs text-amber-800 bg-amber-100">
+                  <Badge key={kpi.id} variant="outline" className="text-xs text-amber-800 bg-amber-100 border-amber-200">
                     {kpi.name} ({Math.round((kpi.dataPoints.currentValue / kpi.dataPoints.targetValue) * 100)}%)
                   </Badge>
                 ))}

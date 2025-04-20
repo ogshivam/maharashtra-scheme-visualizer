@@ -15,7 +15,7 @@ import { getGovData } from '@/utils/dataUtils';
 const Dashboard = () => {
   const { schemeCategories } = useSchemes();
   const navigate = useNavigate();
-  const [activeCategory, setActiveCategory] = useState('psd'); // Default to public service delivery
+  const [activeCategory, setActiveCategory] = useState<string>('psd'); // Default to public service delivery
   const [view, setView] = useState<'category' | 'district'>('category');
 
   const maharashtraData = getGovData();
@@ -26,6 +26,10 @@ const Dashboard = () => {
     if (newView === 'district') {
       navigate('/district-view');
     }
+  };
+
+  const handleCategoryChange = (categoryId: string) => {
+    setActiveCategory(categoryId);
   };
 
   return (
@@ -64,7 +68,7 @@ const Dashboard = () => {
               <CategoryNavigation 
                 categories={schemeCategories} 
                 activeCategory={activeCategory}
-                onChange={(categoryId) => setActiveCategory(categoryId)} 
+                onChange={handleCategoryChange} 
               />
             </div>
             

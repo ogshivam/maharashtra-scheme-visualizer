@@ -5,9 +5,10 @@ import { SchemeCategory } from "@/contexts/SchemesContext";
 interface CategoryNavigationProps {
   categories: SchemeCategory[];
   activeCategory: string | null;
+  onChange?: (categoryId: string) => void;
 }
 
-const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationProps) => {
+const CategoryNavigation = ({ categories, activeCategory, onChange }: CategoryNavigationProps) => {
   // Map category IDs to their respective routes
   const getCategoryRoute = (categoryId: string): string => {
     switch(categoryId) {
@@ -24,6 +25,12 @@ const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationPr
     }
   };
   
+  const handleClick = (categoryId: string) => {
+    if (onChange) {
+      onChange(categoryId);
+    }
+  };
+  
   return (
     <div className="mb-8">
       <nav className="flex overflow-x-auto pb-2 space-x-2">
@@ -34,6 +41,7 @@ const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationPr
               ? "bg-dashboardBlue text-white border-dashboardBlue"
               : "bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
           }`}
+          onClick={() => handleClick('null')}
         >
           All Categories
         </Link>
@@ -47,6 +55,7 @@ const CategoryNavigation = ({ categories, activeCategory }: CategoryNavigationPr
                 ? "bg-dashboardBlue text-white border-dashboardBlue"
                 : "bg-white hover:bg-gray-50 text-gray-700 border-gray-200"
             }`}
+            onClick={() => handleClick(category.id)}
           >
             {category.name}
           </Link>

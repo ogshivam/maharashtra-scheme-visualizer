@@ -41,9 +41,9 @@ export const downloadCSV = (kpis: KPI[], filename: string = 'kpi-data.csv'): voi
   const link = document.createElement('a');
   
   // Create download link
-  if (navigator.msSaveBlob) {
-    // For IE/Edge
-    navigator.msSaveBlob(blob, filename);
+  if (navigator && 'msSaveBlob' in navigator) {
+    // For IE/Edge - type assertion to avoid TS error
+    (navigator as any).msSaveBlob(blob, filename);
   } else {
     // For other browsers
     const url = URL.createObjectURL(blob);
