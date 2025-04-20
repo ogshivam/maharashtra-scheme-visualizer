@@ -16,19 +16,19 @@ const DistrictDataView: React.FC = () => {
     ? getSchemes(selectedDistrict.districtCode, selectedDepartment.departmentCode) 
     : [];
 
-  const handleDistrictSelect = (district: District) => {
-    setSelectedDistrict(district);
+  const handleDistrictSelect = (district: any) => {
+    setSelectedDistrict(district as District);
     setSelectedDepartment(null);
     setSelectedScheme(null);
   };
 
-  const handleDepartmentSelect = (department: Department) => {
-    setSelectedDepartment(department);
+  const handleDepartmentSelect = (department: any) => {
+    setSelectedDepartment(department as Department);
     setSelectedScheme(null);
   };
 
-  const handleSchemeSelect = (scheme: Scheme) => {
-    setSelectedScheme(scheme);
+  const handleSchemeSelect = (scheme: any) => {
+    setSelectedScheme(scheme as Scheme);
   };
 
   return (

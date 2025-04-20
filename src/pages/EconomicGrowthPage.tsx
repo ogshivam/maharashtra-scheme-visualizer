@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import Header from '@/components/Header';
+
+import React, { useState } from 'react';
 import SchemeCard from '@/components/SchemeCard';
 import { useSchemes } from '@/contexts/SchemesContext';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import EditKPIModal from '@/components/EditKPIModal';
 import EditSchemeModal from '@/components/EditSchemeModal';
+import { KPI, Scheme } from '@/contexts/SchemesContext';
 
 const EconomicGrowthPage = () => {
-  const { schemes, activeCategory, editKPI, editScheme } = useSchemes();
+  const { getSchemesByCategory, editKPI, editScheme } = useSchemes();
   const { userRole } = useAuth();
   const isAdmin = userRole === 'admin';
   
@@ -17,7 +18,7 @@ const EconomicGrowthPage = () => {
   const [selectedSchemeId, setSelectedSchemeId] = useState<string | null>(null);
   const [selectedKpiKey, setSelectedKpiKey] = useState<string | null>(null);
   
-  const filteredSchemes = schemes.filter(scheme => scheme.category === activeCategory);
+  const schemes = getSchemesByCategory('egfm');
   
   const handleEditKPI = (schemeId: string, kpiKey: string) => {
     setSelectedSchemeId(schemeId);

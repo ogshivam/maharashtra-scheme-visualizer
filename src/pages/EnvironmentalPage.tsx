@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useSchemes } from '@/contexts/SchemesContext';
 import { useAuth } from '@/contexts/AuthContext';
@@ -8,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { KPI, Scheme } from '@/contexts/SchemesContext';
 
 const EnvironmentalPage = () => {
-  const { getSchemesByCategory, updateKPI, updateScheme } = useSchemes();
+  const { getSchemesByCategory, editKPI, editScheme } = useSchemes();
   const { userRole } = useAuth();
   const isAdmin = userRole === 'admin';
   
@@ -32,8 +33,8 @@ const EnvironmentalPage = () => {
   };
   
   const handleSaveKPI = (updatedKPI: Partial<KPI>) => {
-    if (editingKPI.schemeId && editingKPI.kpi) {
-      updateKPI(editingKPI.schemeId, editingKPI.kpi.id, updatedKPI);
+    if (editingKPI.schemeId && editingKPI.kpi?.id) {
+      editKPI(editingKPI.schemeId, editingKPI.kpi.id, updatedKPI);
       setEditingKPI({ kpi: null, schemeId: null });
     }
   };
@@ -46,8 +47,8 @@ const EnvironmentalPage = () => {
   };
   
   const handleSaveScheme = (updatedScheme: Partial<Scheme>) => {
-    if (editingScheme) {
-      updateScheme(editingScheme.id, updatedScheme);
+    if (editingScheme?.id) {
+      editScheme(editingScheme.id, updatedScheme);
       setEditingScheme(null);
     }
   };

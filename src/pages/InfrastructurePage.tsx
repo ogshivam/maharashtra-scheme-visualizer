@@ -1,5 +1,5 @@
+
 import React, { useState, useEffect } from 'react';
-import Header from '@/components/Header';
 import SchemeCard from '@/components/SchemeCard';
 import { useSchemes } from '@/contexts/SchemesContext';
 import { Button } from '@/components/ui/button';
@@ -10,8 +10,8 @@ import { KPI, Scheme } from '@/contexts/SchemesContext';
 import { useAuth } from '@/contexts/AuthContext';
 
 const InfrastructurePage = () => {
-  const { schemes: allSchemes, editKPI, editScheme } = useSchemes();
-  const [schemes, setSchemes] = useState(allSchemes);
+  const { getSchemesByCategory, editKPI, editScheme } = useSchemes();
+  const [schemes, setSchemes] = useState<Scheme[]>([]);
   const [editKPIModalOpen, setEditKPIModalOpen] = useState(false);
   const [editSchemeModalOpen, setEditSchemeModalOpen] = useState(false);
   const [selectedSchemeId, setSelectedSchemeId] = useState<string | null>(null);
@@ -21,10 +21,10 @@ const InfrastructurePage = () => {
   const isAdmin = userRole === 'admin';
   
   useEffect(() => {
-    // Filter schemes based on the category when the component mounts or when allSchemes changes
-    const filteredSchemes = allSchemes.filter(scheme => scheme.category === 'iud');
-    setSchemes(filteredSchemes);
-  }, [allSchemes]);
+    // Get schemes for infrastructure category
+    const infrastructureSchemes = getSchemesByCategory('iud');
+    setSchemes(infrastructureSchemes);
+  }, [getSchemesByCategory]);
 
   const handleEditKPI = (schemeId: string, kpiKey: string) => {
     setSelectedSchemeId(schemeId);

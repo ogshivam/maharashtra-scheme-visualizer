@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import SchemeCard from '@/components/SchemeCard';
 import { useSchemes } from '@/contexts/SchemesContext';
 import { Button } from '@/components/ui/button';
 import EditKPIModal from '@/components/EditKPIModal';
 import EditSchemeModal from '@/components/EditSchemeModal';
 import { useAuth } from '@/contexts/AuthContext';
+import { KPI, Scheme } from '@/contexts/SchemesContext';
 
 const PublicServiceDeliveryPage = () => {
-  const { schemes, editKPI, editScheme } = useSchemes();
+  const { getSchemesByCategory, editKPI, editScheme } = useSchemes();
   const { userRole } = useAuth();
   const isAdmin = userRole === 'admin';
+  
+  // Get schemes for public service delivery category
+  const schemes = getSchemesByCategory('psd');
   
   const [selectedSchemeId, setSelectedSchemeId] = useState<string | null>(null);
   const [selectedKpiKey, setSelectedKpiKey] = useState<string | null>(null);
@@ -67,7 +72,7 @@ const PublicServiceDeliveryPage = () => {
       </div>
       
       <div className="space-y-6">
-        {schemes.map((scheme) => (
+        {schemes && schemes.map((scheme) => (
           <SchemeCard
             key={scheme.id}
             scheme={scheme}
@@ -99,3 +104,4 @@ const PublicServiceDeliveryPage = () => {
 };
 
 export default PublicServiceDeliveryPage;
+

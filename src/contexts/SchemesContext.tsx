@@ -1,5 +1,7 @@
+
 import { createContext, useContext, useState, ReactNode } from "react";
 import rawData from "../data.json";
+import maharashtraData from '../data/maharashtraData.json';
 
 export interface KPI {
   id?: string;
@@ -94,8 +96,13 @@ const transformData = (rawData: Record<string, RawScheme[]>): SchemeCategory[] =
 
 interface SchemesContextType {
   schemeCategories: SchemeCategory[];
-  updateKPI: (categoryId: string, schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => void;
-  updateScheme: (categoryId: string, schemeId: string, updatedScheme: Partial<Scheme>) => void;
+  activeCategory: string;
+  updateKPI: (schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => void;
+  updateScheme: (schemeId: string, updatedScheme: Partial<Scheme>) => void;
+  schemes: Scheme[];
+  getSchemesByCategory: (categoryId: string) => Scheme[];
+  editKPI: (schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => void;
+  editScheme: (schemeId: string, updatedScheme: Partial<Scheme>) => void;
 }
 
 const SchemesContext = createContext<SchemesContextType | undefined>(undefined);
@@ -104,60 +111,75 @@ export const SchemesProvider = ({ children }: { children: ReactNode }) => {
   const [schemeCategories, setSchemeCategories] = useState<SchemeCategory[]>(() => 
     transformData(rawData as Record<string, RawScheme[]>)
   );
+  const [activeCategory, setActiveCategory] = useState<string>('psd');
 
-  const updateKPI = (categoryId: string, schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => {
+  // Get all schemes
+  const schemes = schemeCategories.flatMap(category => category.schemes);
+
+  // Get schemes by category
+  const getSchemesByCategory = (categoryId: string): Scheme[] => {
+    const category = schemeCategories.find(cat => cat.id === categoryId);
+    return category?.schemes || [];
+  };
+
+  // Common update KPI function
+  const updateKPI = (schemeId: string, kpiId: string, updatedKPI: Partial<KPI>) => {
     setSchemeCategories(prevCategories => {
       return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: category.schemes.map(scheme => {
-              if (scheme.id === schemeId) {
-                return {
-                  ...scheme,
-                  KPIs: {
-                    ...scheme.KPIs,
-                    [kpiId]: {
-                      ...scheme.KPIs[kpiId],
-                      ...updatedKPI
-                    }
+        return {
+          ...category,
+          schemes: category.schemes.map(scheme => {
+            if (scheme.id === schemeId) {
+              return {
+                ...scheme,
+                KPIs: {
+                  ...scheme.KPIs,
+                  [kpiId]: {
+                    ...scheme.KPIs[kpiId],
+                    ...updatedKPI
                   }
-                };
-              }
-              return scheme;
-            })
-          };
-        }
-        return category;
+                }
+              };
+            }
+            return scheme;
+          })
+        };
       });
     });
   };
 
-  const updateScheme = (categoryId: string, schemeId: string, updatedScheme: Partial<Scheme>) => {
+  // Common update Scheme function
+  const updateScheme = (schemeId: string, updatedScheme: Partial<Scheme>) => {
     setSchemeCategories(prevCategories => {
       return prevCategories.map(category => {
-        if (category.id === categoryId) {
-          return {
-            ...category,
-            schemes: category.schemes.map(scheme => {
-              if (scheme.id === schemeId) {
-                return { ...scheme, ...updatedScheme };
-              }
-              return scheme;
-            })
-          };
-        }
-        return category;
+        return {
+          ...category,
+          schemes: category.schemes.map(scheme => {
+            if (scheme.id === schemeId) {
+              return { ...scheme, ...updatedScheme };
+            }
+            return scheme;
+          })
+        };
       });
     });
   };
+
+  // Alias functions for compatibility with different page implementations
+  const editKPI = updateKPI;
+  const editScheme = updateScheme;
 
   return (
     <SchemesContext.Provider
       value={{
         schemeCategories,
+        activeCategory,
         updateKPI,
-        updateScheme
+        updateScheme,
+        schemes,
+        getSchemesByCategory,
+        editKPI,
+        editScheme
       }}
     >
       {children}
@@ -172,3 +194,4 @@ export const useSchemes = () => {
   }
   return context;
 };
+

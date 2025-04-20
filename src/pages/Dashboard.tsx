@@ -9,8 +9,9 @@ import { useNavigate } from 'react-router-dom';
 import DistrictDataView from '@/components/DistrictDataView';
 
 const Dashboard = () => {
-  const { schemeCategories, activeCategory } = useSchemes();
+  const { schemeCategories } = useSchemes();
   const navigate = useNavigate();
+  const activeCategory = 'psd'; // Default to public service delivery
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
