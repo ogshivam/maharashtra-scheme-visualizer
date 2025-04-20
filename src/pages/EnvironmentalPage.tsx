@@ -7,6 +7,7 @@ import EditKPIModal from '@/components/EditKPIModal';
 import EditSchemeModal from '@/components/EditSchemeModal';
 import { Button } from '@/components/ui/button';
 import { KPI, Scheme } from '@/contexts/SchemesContext';
+import { toast } from 'sonner';
 
 const EnvironmentalPage = () => {
   const { getSchemesByCategory, editKPI, editScheme } = useSchemes();
@@ -36,6 +37,7 @@ const EnvironmentalPage = () => {
     if (editingKPI.schemeId && editingKPI.kpi?.id) {
       editKPI(editingKPI.schemeId, editingKPI.kpi.id, updatedKPI);
       setEditingKPI({ kpi: null, schemeId: null });
+      toast.success("KPI updated successfully");
     }
   };
   
@@ -50,44 +52,56 @@ const EnvironmentalPage = () => {
     if (editingScheme?.id) {
       editScheme(editingScheme.id, updatedScheme);
       setEditingScheme(null);
+      toast.success("Scheme updated successfully");
     }
+  };
+
+  const handleAddScheme = () => {
+    toast.info("Add Scheme functionality will be implemented soon");
+    // This would be implemented to add a new scheme
   };
   
   return (
-    <div>
+    <div className="space-y-8">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-xl font-bold">Environmental Protection & Sustainability</h2>
         {isAdmin && (
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={handleAddScheme}>
             Add New Scheme
           </Button>
         )}
       </div>
       
-      <div className="space-y-6">
-        {schemes.map((scheme) => (
-          <SchemeCard
-            key={scheme.id}
-            scheme={scheme}
-            onEditKPI={isAdmin ? handleEditKPI : undefined}
-            onEditScheme={isAdmin ? handleEditScheme : undefined}
-          />
-        ))}
-        
-        <EditKPIModal
-          open={!!editingKPI.kpi}
-          onClose={() => setEditingKPI({ kpi: null, schemeId: null })}
-          kpi={editingKPI.kpi}
-          onSave={handleSaveKPI}
-        />
-        
-        <EditSchemeModal
-          open={!!editingScheme}
-          onClose={() => setEditingScheme(null)}
-          scheme={editingScheme}
-          onSave={handleSaveScheme}
-        />
-      </div>
+      {schemes.length === 0 ? (
+        <div className="text-center py-12 border rounded-md bg-gray-50">
+          <p className="text-muted-foreground">No environmental schemes found. Add a new scheme to get started.</p>
+        </div>
+      ) : (
+        <div className="space-y-6">
+          {schemes.map((scheme) => (
+            <SchemeCard
+              key={scheme.id}
+              scheme={scheme}
+              onEditKPI={isAdmin ? handleEditKPI : undefined}
+              onEditScheme={isAdmin ? handleEditScheme : undefined}
+            />
+          ))}
+        </div>
+      )}
+      
+      <EditKPIModal
+        open={!!editingKPI.kpi}
+        onClose={() => setEditingKPI({ kpi: null, schemeId: null })}
+        kpi={editingKPI.kpi}
+        onSave={handleSaveKPI}
+      />
+      
+      <EditSchemeModal
+        open={!!editingScheme}
+        onClose={() => setEditingScheme(null)}
+        scheme={editingScheme}
+        onSave={handleSaveScheme}
+      />
     </div>
   );
 };
